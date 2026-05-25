@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/login-gov/main/json-schema/login-gov-id-token-schema.json",
+  "title": "Login.gov ID Token Claims",
+  "description": "Decoded payload of the Login.gov OIDC id_token JWT (signed RS256).",
+  "type": "object",
+  "required": ["iss", "aud", "sub", "exp", "iat", "nonce", "jti"],
+  "properties": {
+    "iss": {
+      "type": "string",
+      "format": "uri",
+      "description": "Issuer URL of the Login.gov IdP."
+    },
+    "aud": {
+      "type": "string",
+      "description": "The relying party's client_id."
+    },
+    "sub": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Stable per-RP user UUID v4."
+    },
+    "nonce": {
+      "type": "string",
+      "minLength": 22,
+      "description": "Echo of the nonce parameter from the authorization request."
+    },
+    "acr": {
+      "type": "string",
+      "description": "Authentication Context Class Reference granted, e.g. an acr_values entry."
+    },
+    "jti": {
+      "type": "string",
+      "description": "Unique JWT identifier."
+    },
+    "at_hash": { "type": "string" },
+    "c_hash": { "type": "string" },
+    "exp": { "type": "integer", "description": "Expiration (Unix Epoch seconds)." },
+    "iat": { "type": "integer", "description": "Issued at (Unix Epoch seconds)." },
+    "nbf": { "type": "integer", "description": "Not-before (Unix Epoch seconds)." }
+  }
+}

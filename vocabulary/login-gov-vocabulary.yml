@@ -1,0 +1,129 @@
+vocabulary: login-gov
+description: |
+  Controlled vocabulary covering Login.gov's identity assurance, authenticator assurance,
+  protocols, and attribute model. Aligned to NIST SP 800-63-3 and the iGov OIDC profile.
+created: '2026-05-25'
+modified: '2026-05-25'
+terms:
+- term: Login.gov
+  definition: Federal single sign-on and identity verification service for the U.S. public, operated by GSA Technology Transformation Services.
+  type: Service
+- term: Relying Party
+  definition: An application or agency system that delegates user authentication to Login.gov via OIDC or SAML.
+  aliases:
+  - RP
+  - Service Provider
+  - SP
+  type: Role
+- term: Partner Portal
+  definition: Login.gov self-service interface where agency RPs register clients, configure scopes, and manage certificates. Sandbox is at portal.int.identitysandbox.gov.
+  type: Tool
+
+- term: IAL
+  definition: Identity Assurance Level per NIST SP 800-63-3 expressing the rigor of identity proofing.
+  type: Concept
+- term: IAL1
+  definition: Authentication-only — Login.gov verifies the user controls an email address and authenticator but does not verify real-world identity.
+  type: AssuranceLevel
+- term: IAL2
+  definition: Identity-verified — Login.gov proofs the user against authoritative records, optionally with facial match, before releasing attributes such as legal name, address, and SSN.
+  type: AssuranceLevel
+- term: AAL
+  definition: Authenticator Assurance Level per NIST SP 800-63-3 expressing the strength of the authentication ceremony.
+  type: Concept
+- term: AAL2
+  definition: Multi-factor authentication. Login.gov supports TOTP, SMS/voice, push, backup codes, security keys, PIV/CAC, and FaceID/TouchID-bound passkeys.
+  type: AssuranceLevel
+- term: AAL2 Phishing-Resistant
+  definition: AAL2 restricted to phishing-resistant authenticators (security keys, PIV/CAC, platform passkeys).
+  type: AssuranceLevel
+- term: AAL2 HSPD-12
+  definition: AAL2 restricted to Personal Identity Verification (PIV) or Common Access Card (CAC) credentials issued under HSPD-12.
+  type: AssuranceLevel
+
+- term: OpenID Connect
+  definition: OAuth 2.0-based federated authentication protocol. Login.gov conforms to the iGov OIDC Profile and does not support implicit flow.
+  aliases:
+  - OIDC
+  type: Protocol
+- term: SAML 2.0
+  definition: XML-based federated authentication standard. Login.gov supports HTTP-Redirect SSO and HTTP-POST SLO with persistent UUID v4 NameID.
+  type: Protocol
+- term: private_key_jwt
+  definition: OIDC client authentication method where the client signs a JWT with a 2048-bit private key. Preferred for Login.gov web app integrations.
+  type: AuthenticationMethod
+- term: PKCE
+  definition: Proof Key for Code Exchange. Preferred Login.gov auth method for native mobile relying parties.
+  type: AuthenticationMethod
+
+- term: acr_values
+  definition: OIDC authorization parameter that requests a specific IAL and AAL. Login.gov defines service-level URIs in the urn:acr.login.gov namespace.
+  type: Parameter
+- term: urn:acr.login.gov:auth-only
+  definition: IAL1 service-level acr value.
+  type: AcrValue
+- term: urn:acr.login.gov:verified
+  definition: IAL2 service-level acr value.
+  type: AcrValue
+- term: urn:acr.login.gov:verified-facial-match-required
+  definition: IAL2 with facial match mandatory.
+  type: AcrValue
+- term: urn:acr.login.gov:verified-facial-match-preferred
+  definition: IAL2 with facial match preferred but optional.
+  type: AcrValue
+
+- term: Scope
+  definition: OIDC scope controlling which user attributes the RP is permitted to request.
+  type: Concept
+- term: openid
+  definition: Required base scope for any Login.gov OIDC request.
+  type: Scope
+- term: profile
+  definition: Returns given_name, family_name, and birthdate. Requires IAL2.
+  type: Scope
+- term: profile:name
+  definition: Returns given_name and family_name only. Requires IAL2.
+  type: Scope
+- term: profile:birthdate
+  definition: Returns birthdate only. Requires IAL2.
+  type: Scope
+- term: profile:verified_at
+  definition: Returns the timestamp of identity verification.
+  type: Scope
+- term: email
+  definition: Returns the user's verified email address. Available at IAL1.
+  type: Scope
+- term: all_emails
+  definition: Returns every verified email on the account.
+  type: Scope
+- term: address
+  definition: Returns the verified mailing address object. Requires IAL2.
+  type: Scope
+- term: phone
+  definition: Returns the verified phone number. Requires IAL2.
+  type: Scope
+- term: social_security_number
+  definition: Returns the user's SSN. Requires IAL2 and additional approval.
+  type: Scope
+- term: locale
+  definition: Returns user's locale preference (en, es, fr).
+  type: Scope
+- term: x509
+  definition: Returns x509 certificate subject, issuer, and presented claims. Used with PIV/CAC authentication.
+  type: Scope
+
+- term: Sandbox
+  definition: Login.gov integration environment at idp.int.identitysandbox.gov. Test users only — no real PII.
+  type: Environment
+- term: Production
+  definition: Live Login.gov environment at secure.login.gov. Requires signed Interagency Agreement (IAA).
+  type: Environment
+
+- term: IAA
+  definition: Interagency Agreement — the funding contract between Login.gov (GSA TTS) and a partner agency that authorizes production use under Login.gov's cost-recoverable funding model.
+  aliases:
+  - Interagency Agreement
+  type: Contract
+- term: Cost Recovery
+  definition: GSA TTS funding model where partner agencies reimburse Login.gov for usage; pricing is negotiated per IAA rather than published as a public rate card.
+  type: BillingModel

@@ -1,0 +1,25 @@
+{
+  "sub": "c41d0eaf-1d8e-4c14-9a8e-2b7f4f8a5b21",
+  "iss": "https://secure.login.gov",
+  "email": "jane.doe@example.gov",
+  "email_verified": true,
+  "all_emails": ["jane.doe@example.gov", "jdoe@example.com"],
+  "locale": "en",
+  "ial": "http://idmanagement.gov/ns/assurance/ial/2",
+  "aal": "http://idmanagement.gov/ns/assurance/aal/2?phishing_resistant=true",
+  "given_name": "Jane",
+  "family_name": "Doe",
+  "birthdate": "1985-04-12",
+  "address": {
+    "formatted": "1 First St NE\nWashington, DC 20543",
+    "street_address": "1 First St NE",
+    "locality": "Washington",
+    "region": "DC",
+    "postal_code": "20543",
+    "country": "US"
+  },
+  "phone": "+12025550100",
+  "phone_verified": true,
+  "social_security_number": "***-**-4242",
+  "verified_at": 1764201600
+}

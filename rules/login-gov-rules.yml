@@ -1,0 +1,64 @@
+extends:
+- spectral:oas
+rules:
+  login-gov-title-case-summaries:
+    description: Operation summaries should use Title Case (Login.gov OIDC/SAML house style).
+    given: $.paths[*][*].summary
+    severity: warn
+    then:
+      function: pattern
+      functionOptions:
+        match: '^[A-Z][A-Za-z0-9]*( [A-Z0-9][A-Za-z0-9/.-]*)*$'
+
+  login-gov-operation-id-camel-case:
+    description: operationId should be camelCase.
+    given: $.paths[*][*].operationId
+    severity: warn
+    then:
+      function: pattern
+      functionOptions:
+        match: '^[a-z][a-zA-Z0-9]+$'
+
+  login-gov-require-tag:
+    description: Every operation must be tagged.
+    given: $.paths[*][*]
+    severity: error
+    then:
+      field: tags
+      function: truthy
+
+  login-gov-min-22-char-state-nonce:
+    description: The `state` and `nonce` parameters MUST be at least 22 characters long.
+    given: $.paths['/openid_connect/authorize'].get.parameters[?(@.name=='state' || @.name=='nonce')].schema
+    severity: error
+    then:
+      field: minLength
+      function: truthy
+
+  login-gov-require-prompt-select-account:
+    description: Authorization requests must declare prompt=select_account.
+    given: $.paths['/openid_connect/authorize'].get.parameters[?(@.name=='prompt')].schema.enum
+    severity: error
+    then:
+      function: enumeration
+      functionOptions:
+        values:
+        - select_account
+
+  login-gov-response-type-code-only:
+    description: Login.gov supports only response_type=code (implicit flow is not supported).
+    given: $.paths['/openid_connect/authorize'].get.parameters[?(@.name=='response_type')].schema.enum
+    severity: error
+    then:
+      function: enumeration
+      functionOptions:
+        values:
+        - code
+
+  login-gov-bearer-on-userinfo:
+    description: The userinfo endpoint must require bearer authentication.
+    given: $.paths['/api/openid_connect/userinfo'].get
+    severity: error
+    then:
+      field: security
+      function: truthy

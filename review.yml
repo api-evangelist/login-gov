@@ -1,0 +1,47 @@
+executed: '2026-05-25T00:00:00.000Z'
+provider: login-gov
+reviewer: API Evangelist
+tier: 1
+summary: |
+  Login.gov is a Tier-1 federal SSO provider. It publishes a complete developer portal
+  (developers.login.gov) covering OIDC (iGov profile) and SAML 2.0, with explicit
+  endpoint documentation for discovery, authorize, token, userinfo, logout, and JWKS;
+  SAML metadata, SSO, and SLO. Attribute model is well-documented, sandbox is
+  self-service, source code is published on GitHub (18F/identity-idp), and sample
+  relying party apps exist. The pricing model is cost-recoverable via Interagency
+  Agreement rather than public — typical for federal services.
+strengths:
+- Complete OIDC and SAML developer documentation with explicit endpoint URLs for both sandbox and production
+- iGov OIDC profile conformance; private_key_jwt + PKCE; no implicit flow
+- IAL1/IAL2 and AAL2 (including phishing-resistant and HSPD-12 PIV/CAC) acr_values published
+- Open-source IdP and sample relying parties on github.com/18F
+- Self-service Partner Portal with sandbox at no cost
+- Annual key/certificate rotation with versioned SAML endpoints and JWKS for OIDC
+- Multilingual support (English, Spanish, French)
+- Section 508 commitment and public privacy/PIA
+weaknesses:
+- No public pricing rate card — costs are negotiated per IAA
+- No published per-RP rate limits
+- Only Ruby sample applications; no first-party SDKs in other languages
+- No formal OpenAPI / SAML metadata bundle published by Login.gov itself (this profile fills the OpenAPI gap)
+recommendations:
+- Publish OpenAPI for the OIDC surface to make IdP behavior machine-readable
+- Provide first-party SDKs or starter kits for popular languages (Node, Python, Java, Go, .NET)
+- Publish per-RP rate limit guidance to help SPs implement defensive backoff
+- Provide a published rate card or order-of-magnitude pricing guidance to ease partner onboarding
+sources:
+- https://developers.login.gov
+- https://developers.login.gov/oidc/
+- https://developers.login.gov/oidc/getting-started/
+- https://developers.login.gov/oidc/authorization/
+- https://developers.login.gov/oidc/token/
+- https://developers.login.gov/oidc/user-info/
+- https://developers.login.gov/oidc/logout/
+- https://developers.login.gov/oidc/certificates/
+- https://developers.login.gov/saml/
+- https://developers.login.gov/saml/getting-started/
+- https://developers.login.gov/attributes/
+- https://www.login.gov/partners/get-started/
+- https://github.com/18F/identity-idp
+- https://github.com/18F/identity-oidc-sinatra
+- https://github.com/18F/identity-saml-sinatra

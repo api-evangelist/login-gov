@@ -1,0 +1,179 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Login.gov OIDC — Authentication
+  description: Login.gov OpenID Connect authentication capability. Covers discovery, authorization, token exchange, userinfo, and RP-initiated logout against the federal SSO IdP.
+  tags:
+  - LoginGov
+  - OIDC
+  - Authentication
+  - Federal
+  - SSO
+  created: '2026-05-25'
+  modified: '2026-05-25'
+binds:
+- namespace: env
+  keys:
+    LOGIN_GOV_BASE_URL: LOGIN_GOV_BASE_URL
+    LOGIN_GOV_CLIENT_ID: LOGIN_GOV_CLIENT_ID
+    LOGIN_GOV_ACCESS_TOKEN: LOGIN_GOV_ACCESS_TOKEN
+capability:
+  consumes:
+  - type: http
+    namespace: login-gov-oidc
+    baseUri: '{{env.LOGIN_GOV_BASE_URL}}'
+    description: Login.gov OIDC endpoints. Default to sandbox idp.int.identitysandbox.gov; switch to secure.login.gov in production.
+    resources:
+    - name: discovery
+      path: /.well-known/openid-configuration
+      operations:
+      - name: getDiscovery
+        method: GET
+        description: Get Login.gov OIDC Discovery Document
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: jwks
+      path: /api/openid_connect/certs
+      operations:
+      - name: getJwks
+        method: GET
+        description: Get Login.gov JWKS Signing Keys
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: token
+      path: /api/openid_connect/token
+      operations:
+      - name: exchangeToken
+        method: POST
+        description: Exchange Authorization Code For Tokens
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Form-encoded token request body.
+          required: true
+    - name: userinfo
+      path: /api/openid_connect/userinfo
+      operations:
+      - name: getUserInfo
+        method: GET
+        description: Get Authenticated User Attributes
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      value: '{{env.LOGIN_GOV_ACCESS_TOKEN}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: login-gov-oidc-rest
+    port: 8080
+    description: REST adapter for Login.gov OIDC endpoints used by relying parties.
+    resources:
+    - path: /v1/discovery
+      name: discovery
+      description: Discovery document passthrough.
+      operations:
+      - method: GET
+        name: getDiscovery
+        description: Get Login.gov OIDC Discovery Document
+        call: login-gov-oidc.getDiscovery
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/jwks
+      name: jwks
+      description: JWKS passthrough for id_token signature verification.
+      operations:
+      - method: GET
+        name: getJwks
+        description: Get Login.gov JWKS Signing Keys
+        call: login-gov-oidc.getJwks
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/token
+      name: token
+      description: Token exchange passthrough.
+      operations:
+      - method: POST
+        name: exchangeToken
+        description: Exchange Authorization Code For Tokens
+        call: login-gov-oidc.exchangeToken
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/userinfo
+      name: userinfo
+      description: UserInfo passthrough.
+      operations:
+      - method: GET
+        name: getUserInfo
+        description: Get Authenticated User Attributes
+        call: login-gov-oidc.getUserInfo
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: login-gov-oidc-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter exposing read-only OIDC inspection tools.
+    tools:
+    - name: login-gov-get-discovery
+      description: Fetch the Login.gov OIDC discovery document.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: login-gov-oidc.getDiscovery
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: login-gov-get-jwks
+      description: Fetch the Login.gov JWKS so id_token signatures can be verified.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: login-gov-oidc.getJwks
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: login-gov-exchange-token
+      description: Exchange a Login.gov authorization code for an id_token and access_token.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: login-gov-oidc.exchangeToken
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: login-gov-get-userinfo
+      description: Fetch authenticated user attributes using an access token.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: login-gov-oidc.getUserInfo
+      outputParameters:
+      - type: object
+        mapping: $.

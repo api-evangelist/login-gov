@@ -1,0 +1,21 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "https://idp.int.identitysandbox.gov/api/openid_connect/token",
+    "headers": {
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    "form": {
+      "grant_type": "authorization_code",
+      "code": "abc123def456ghi789",
+      "client_assertion_type": "urn:ietf:params:oauth:client-assertion-type:jwt-bearer",
+      "client_assertion": "<signed JWT RS256>"
+    }
+  },
+  "response": {
+    "access_token": "9e6b1a2f-3c4d-4e5a-9d8c-7b6a5f4e3d2c",
+    "token_type": "Bearer",
+    "expires_in": 3600,
+    "id_token": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjIwMjYta2V5LTAxIn0..."
+  }
+}

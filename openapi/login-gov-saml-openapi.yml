@@ -1,0 +1,167 @@
+openapi: 3.1.0
+info:
+  title: Login.gov SAML 2.0 API
+  version: '2026-01'
+  description: |
+    Login.gov also supports SAML 2.0 for relying parties that prefer enterprise federation
+    semantics over OIDC. SAML endpoints are versioned by certificate year (the `2026` suffix
+    corresponds to certificates valid through April 1, 2027). The persistent NameID format
+    issues a per-RP UUID v4.
+
+    The SSO endpoint accepts the HTTP-Redirect binding; SLO uses HTTP-POST. Login.gov's
+    SAML certificates are published in the metadata endpoint and should be loaded
+    dynamically so that annual rotations do not require code changes.
+  contact:
+    name: Login.gov Partner Support
+    url: https://developers.login.gov
+    email: partners@login.gov
+  license:
+    name: Public Domain (U.S. Government Work)
+    url: https://www.usa.gov/government-works
+servers:
+- url: https://idp.int.identitysandbox.gov
+  description: Sandbox (integration) environment
+- url: https://secure.login.gov
+  description: Production environment
+tags:
+- name: Metadata
+  description: SAML 2.0 IdP metadata.
+- name: Authentication
+  description: SAML SSO request endpoint.
+- name: Logout
+  description: SAML Single Logout endpoint.
+paths:
+  /api/saml/metadata2026:
+    get:
+      tags:
+      - Metadata
+      summary: Get SAML 2.0 IdP Metadata
+      operationId: getSamlMetadata
+      description: Returns the SAML 2.0 IdP metadata XML including entity ID, SSO/SLO endpoints, signing certificate, and supported NameID formats.
+      responses:
+        '200':
+          description: SAML metadata document.
+          content:
+            application/samlmetadata+xml:
+              schema:
+                type: string
+                format: xml
+            application/xml:
+              schema:
+                type: string
+                format: xml
+  /api/saml/auth2026:
+    get:
+      tags:
+      - Authentication
+      summary: Initiate SAML SSO (HTTP-Redirect)
+      operationId: samlSso
+      description: |
+        Accepts a Base64-encoded, DEFLATE-compressed `SAMLRequest` via HTTP-Redirect.
+        The user authenticates with Login.gov and the IdP responds with a signed SAML
+        assertion POSTed to the SP's Assertion Consumer Service URL.
+      parameters:
+      - name: SAMLRequest
+        in: query
+        required: true
+        description: Base64-encoded DEFLATE-compressed AuthnRequest.
+        schema:
+          type: string
+      - name: RelayState
+        in: query
+        required: false
+        description: Opaque value echoed back in the SAML response.
+        schema:
+          type: string
+      - name: SigAlg
+        in: query
+        required: false
+        description: Signature algorithm URI when the request is signed.
+        schema:
+          type: string
+      - name: Signature
+        in: query
+        required: false
+        description: Base64-encoded signature over the request.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Login.gov sign-in UI is rendered to the end user.
+        '302':
+          description: Redirect to authentication challenge or to SP ACS with the signed SAML response.
+  /api/saml/logout2026:
+    post:
+      tags:
+      - Logout
+      summary: SAML Single Logout (HTTP-POST)
+      operationId: samlSlo
+      description: Accepts a signed `LogoutRequest` from the SP and terminates the user's Login.gov session.
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - SAMLRequest
+              properties:
+                SAMLRequest:
+                  type: string
+                  description: Base64-encoded SAML LogoutRequest.
+                RelayState:
+                  type: string
+      responses:
+        '200':
+          description: LogoutResponse posted back to the SP's SLO endpoint.
+components:
+  schemas:
+    SamlAssertionAttributes:
+      type: object
+      description: Attributes returned in a Login.gov SAML assertion (attribute names follow Login.gov conventions, not OIDC claim names).
+      properties:
+        uuid:
+          type: string
+          description: Stable per-RP user identifier.
+        email:
+          type: string
+        all_emails:
+          type: string
+        locale:
+          type: string
+        ial:
+          type: string
+        aal:
+          type: string
+        first_name:
+          type: string
+          description: Available at IAL2.
+        last_name:
+          type: string
+          description: Available at IAL2.
+        address1:
+          type: string
+        address2:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        zipcode:
+          type: string
+        phone:
+          type: string
+        dob:
+          type: string
+          format: date
+        ssn:
+          type: string
+          description: Social Security Number. Available at IAL2 only.
+        verified_at:
+          type: string
+        x509_subject:
+          type: string
+        x509_issuer:
+          type: string
+        x509_presented:
+          type: string

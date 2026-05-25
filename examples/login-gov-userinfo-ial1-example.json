@@ -1,0 +1,11 @@
+{
+  "sub": "8b2ae317-9c7a-4e07-9e2d-3b9be0a7e1d1",
+  "iss": "https://secure.login.gov",
+  "email": "user@example.gov",
+  "email_verified": true,
+  "all_emails": ["user@example.gov"],
+  "locale": "en",
+  "ial": "http://idmanagement.gov/ns/assurance/ial/1",
+  "aal": "http://idmanagement.gov/ns/assurance/aal/2",
+  "verified_at": null
+}

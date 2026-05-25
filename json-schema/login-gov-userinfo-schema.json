@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/login-gov/main/json-schema/login-gov-userinfo-schema.json",
+  "title": "Login.gov UserInfo",
+  "description": "Schema for the JSON object returned by Login.gov's OIDC userinfo endpoint. IAL2-only attributes are only populated for users who have completed identity verification and consented to the corresponding scope.",
+  "type": "object",
+  "required": ["sub", "iss", "email", "email_verified"],
+  "properties": {
+    "sub": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Stable per-RP user identifier (UUID v4)."
+    },
+    "iss": {
+      "type": "string",
+      "format": "uri",
+      "description": "Issuer URL. Sandbox: https://idp.int.identitysandbox.gov. Production: https://secure.login.gov."
+    },
+    "email": {
+      "type": "string",
+      "format": "email"
+    },
+    "email_verified": {
+      "type": "boolean",
+      "description": "Login.gov only returns verified email addresses."
+    },
+    "all_emails": {
+      "type": "array",
+      "items": { "type": "string", "format": "email" },
+      "description": "All verified addresses on the user's Login.gov account."
+    },
+    "locale": {
+      "type": "string",
+      "enum": ["en", "es", "fr"]
+    },
+    "ial": {
+      "type": "string",
+      "description": "Identity Assurance Level granted.",
+      "examples": [
+        "http://idmanagement.gov/ns/assurance/ial/1",
+        "http://idmanagement.gov/ns/assurance/ial/2"
+      ]
+    },
+    "aal": {
+      "type": "string",
+      "description": "Authenticator Assurance Level granted.",
+      "examples": [
+        "http://idmanagement.gov/ns/assurance/aal/2",
+        "http://idmanagement.gov/ns/assurance/aal/2?phishing_resistant=true",
+        "http://idmanagement.gov/ns/assurance/aal/2?hspd12=true"
+      ]
+    },
+    "given_name": { "type": "string", "description": "IAL2 only." },
+    "family_name": { "type": "string", "description": "IAL2 only." },
+    "birthdate": { "type": "string", "format": "date", "description": "IAL2 only." },
+    "address": {
+      "type": "object",
+      "description": "IAL2 only.",
+      "properties": {
+        "formatted": { "type": "string" },
+        "street_address": { "type": "string" },
+        "locality": { "type": "string" },
+        "region": { "type": "string" },
+        "postal_code": { "type": "string" },
+        "country": { "type": "string" }
+      }
+    },
+    "phone": { "type": ["string", "null"], "description": "E.164 phone number. IAL2 only. May be null." },
+    "phone_verified": { "type": "boolean" },
+    "social_security_number": { "type": "string", "description": "IAL2 only with social_security_number scope." },
+    "verified_at": {
+      "type": ["integer", "null"],
+      "description": "Unix timestamp when identity verification completed. Null for IAL1 users."
+    },
+    "x509_subject": { "type": "string" },
+    "x509_issuer": { "type": "string" },
+    "x509_presented": { "type": "boolean" }
+  }
+}

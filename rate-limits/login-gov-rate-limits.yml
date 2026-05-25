@@ -1,0 +1,38 @@
+apiCommonsRateLimits: '0.1'
+provider:
+  name: Login.gov
+  id: login-gov
+  url: https://www.login.gov
+description: |
+  Login.gov does not publish a numeric per-RP rate-limit rate card on the public developer
+  documentation. Rate limits, concurrency, and abuse protections are enforced by the IdP
+  but are configured per relying party and discussed with the assigned account manager
+  during onboarding. The IdP enforces user-facing rate limits on credential validation,
+  identity-proofing attempts, and OTP delivery to prevent abuse.
+policies:
+- id: end-user-credential-throttling
+  scope: end-user
+  description: Login.gov rate-limits failed password and OTP attempts per user account to protect against credential stuffing and brute force.
+  enforcement: lockout-and-cooldown
+  published: false
+- id: identity-proofing-throttling
+  scope: end-user
+  description: Repeated IAL2 identity-verification attempts on the same account or device are throttled to protect against document/selfie fraud.
+  enforcement: cooldown
+  published: false
+- id: relying-party-traffic
+  scope: relying-party
+  description: Per-RP traffic limits and concurrency are configured per IAA and tuned with the account manager. Not publicly disclosed.
+  enforcement: per-agreement
+  published: false
+- id: discovery-and-jwks
+  scope: public
+  description: The OIDC discovery and JWKS endpoints are publicly cacheable; clients should cache and refresh per the `Cache-Control` header rather than polling.
+  enforcement: cache-friendly
+  published: true
+notes:
+- Service Provider applications should implement exponential backoff on 429 and 5xx responses.
+- Key rotations occur at least annually for OIDC JWKS and on a yearly cadence for SAML certificates.
+sources:
+- https://developers.login.gov/oidc/certificates/
+- https://developers.login.gov/saml/getting-started/

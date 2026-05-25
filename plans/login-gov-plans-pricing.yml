@@ -1,0 +1,51 @@
+apiCommonsPlans: '0.1'
+provider:
+  name: Login.gov
+  id: login-gov
+  url: https://www.login.gov
+  operator: U.S. General Services Administration — Technology Transformation Services
+billingModel: Cost-Recoverable Federal Service
+billingCurrency: USD
+publicRateCard: false
+description: |
+  Login.gov is a cost-recoverable federal service. By statute, GSA TTS must charge partner
+  agencies for Login.gov usage. Pricing is not posted publicly; it is established per-agency
+  through an Interagency Agreement (IAA) using a cost estimator that an assigned Login.gov
+  account manager provides during onboarding. There is no commercial / public-sector
+  pricing tier.
+plans:
+- id: sandbox
+  name: Sandbox
+  price: 0
+  currency: USD
+  audience: Federal agency engineers and prospective partners
+  description: Free access to the Login.gov integration environment at portal.int.identitysandbox.gov. Test users only; no real PII. Used to develop and certify OIDC/SAML integrations before production go-live.
+  scope:
+  - OIDC and SAML against idp.int.identitysandbox.gov
+  - Test users at IAL1 and IAL2
+  - All scopes available for evaluation
+  limits:
+  - No SLA
+  - Subject to fair-use; not for production traffic
+- id: production-iaa
+  name: Production (Interagency Agreement)
+  price: negotiated
+  audience: Federal departments and agencies; some state and local participants via federal sponsor
+  description: Live production at secure.login.gov. Cost recovery model — agency pays per the IAA cost estimator based on projected user base, IAL level mix, and identity-verification volume.
+  requirements:
+  - Approved IAA on file
+  - Cost estimator complete and funded
+  - Production deployment review passed
+  scope:
+  - OIDC and SAML against secure.login.gov
+  - IAL1 (auth-only) and IAL2 (identity-verified) usage
+  - Optional Facial Match for IAL2
+  - Partner support via assigned account manager
+notes:
+- Login.gov does not bill end users.
+- Costs differ materially between IAL1 and IAL2 because IAL2 requires identity-proofing operations and document/selfie verification.
+- Re-verification, fraud monitoring, and PIV/CAC integration may carry additional cost components negotiated in the IAA.
+sources:
+- https://developers.login.gov
+- https://www.login.gov/partners/get-started/
+- https://www.login.gov/partners/business-inquiries/

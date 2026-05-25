@@ -1,0 +1,68 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "loginGov": "https://api-evangelist.github.io/login-gov/vocab#",
+    "oidc": "https://openid.net/specs/openid-connect-core-1_0.html#",
+    "saml": "urn:oasis:names:tc:SAML:2.0:",
+    "nist": "https://pages.nist.gov/800-63-3/",
+
+    "name": "schema:name",
+    "description": "schema:description",
+    "url": "schema:url",
+    "operator": {
+      "@id": "schema:provider",
+      "@type": "schema:GovernmentOrganization"
+    },
+
+    "LoginGovService": {
+      "@id": "loginGov:LoginGovService",
+      "@type": "@id"
+    },
+    "RelyingParty": "loginGov:RelyingParty",
+    "AuthenticationFlow": "loginGov:AuthenticationFlow",
+    "IdentityAssuranceLevel": {
+      "@id": "nist:IAL",
+      "@type": "@vocab"
+    },
+    "AuthenticatorAssuranceLevel": {
+      "@id": "nist:AAL",
+      "@type": "@vocab"
+    },
+    "IAL1": "loginGov:IAL1",
+    "IAL2": "loginGov:IAL2",
+    "AAL2": "loginGov:AAL2",
+    "AAL2PhishingResistant": "loginGov:AAL2PhishingResistant",
+    "AAL2HSPD12": "loginGov:AAL2HSPD12",
+
+    "subject": "oidc:sub",
+    "email": "schema:email",
+    "givenName": "schema:givenName",
+    "familyName": "schema:familyName",
+    "birthDate": "schema:birthDate",
+    "address": "schema:address",
+    "telephone": "schema:telephone",
+    "socialSecurityNumber": "loginGov:socialSecurityNumber",
+    "verifiedAt": "loginGov:verifiedAt",
+
+    "issuer": "oidc:iss",
+    "audience": "oidc:aud",
+    "scope": "loginGov:scope",
+    "acr": "loginGov:acr",
+    "clientId": "loginGov:clientId",
+    "redirectUri": "loginGov:redirectUri",
+    "metadataUrl": "saml:metadata",
+    "ssoUrl": "saml:SingleSignOnService",
+    "sloUrl": "saml:SingleLogoutService"
+  },
+  "@type": "LoginGovService",
+  "name": "Login.gov",
+  "url": "https://www.login.gov",
+  "operator": {
+    "@type": "schema:GovernmentOrganization",
+    "name": "U.S. General Services Administration — Technology Transformation Services",
+    "url": "https://www.gsa.gov/tts"
+  },
+  "description": "Federal single sign-on and identity verification service for the public, supporting OIDC and SAML 2.0 with IAL1/IAL2 and AAL2 assurance.",
+  "issuer": "https://secure.login.gov"
+}
