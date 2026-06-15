@@ -1,0 +1,869 @@
+{
+  "item": [
+    {
+      "id": "163e2d37-8642-488c-9007-d23363235661",
+      "name": "Discovery",
+      "description": {
+        "content": "OIDC discovery and public key endpoints.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a0a1b39b-674a-43cf-9467-725cb1a082a5",
+          "name": "Get OIDC Discovery Document",
+          "request": {
+            "name": "Get OIDC Discovery Document",
+            "description": {
+              "content": "Returns the OpenID Connect discovery document listing supported endpoints, scopes, response types, claims, and acr_values.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ".well-known",
+                "openid-configuration"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "10d9a14a-0a2c-4335-8206-2d456598ff10",
+              "name": "Discovery metadata.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ".well-known",
+                    "openid-configuration"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"issuer\": \"https://idp.int.identitysandbox.gov\",\n  \"authorization_endpoint\": \"https://LBWforfpziilvUBXGfYE.zhbWBAlRq\",\n  \"token_endpoint\": \"https://yLTlCqrguJUtcaHIpSjjtJnbpPg.ruxLxk-k7yr3T7Auc\",\n  \"userinfo_endpoint\": \"http://RGGEmFFfNZoaYnPIqnyemhZgttrFoOfsu.bwlsvU47p6MZtemow\",\n  \"end_session_endpoint\": \"https://bqvkIMGDsKyAyUwjb.yyL93YFlaIkScs.wLEN9J2\",\n  \"jwks_uri\": \"http://GzAqucXx.efIXr.3RrKjbknwcenb2va-GBgBlQUaWtwN+Di9niVuuVaxMfb6AUt1DwgNBcP8,hVJKN.dW-9pvgagEt\",\n  \"scopes_supported\": [\n    \"string\",\n    \"string\"\n  ],\n  \"response_types_supported\": [\n    \"string\",\n    \"string\"\n  ],\n  \"acr_values_supported\": [\n    \"string\",\n    \"string\"\n  ],\n  \"token_endpoint_auth_methods_supported\": [\n    \"string\",\n    \"string\"\n  ],\n  \"id_token_signing_alg_values_supported\": [\n    \"string\",\n    \"string\"\n  ],\n  \"subject_types_supported\": [\n    \"string\",\n    \"string\"\n  ],\n  \"claims_supported\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8c8a182e-4635-42c8-96b0-b32f9a018fe0",
+          "name": "Get JWKS Signing Keys",
+          "request": {
+            "name": "Get JWKS Signing Keys",
+            "description": {
+              "content": "Returns Login.gov's public signing key(s) in JWK Set format. Keys are rotated at least annually; clients should fetch dynamically rather than hard-coding.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "openid_connect",
+                "certs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8c583a06-9081-4ba4-8129-527328efa88b",
+              "name": "JSON Web Key Set.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "openid_connect",
+                    "certs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"keys\": [\n    {\n      \"kty\": \"RSA\",\n      \"kid\": \"string\",\n      \"use\": \"sig\",\n      \"alg\": \"RS256\",\n      \"n\": \"string\",\n      \"e\": \"string\"\n    },\n    {\n      \"kty\": \"RSA\",\n      \"kid\": \"string\",\n      \"use\": \"sig\",\n      \"alg\": \"RS256\",\n      \"n\": \"string\",\n      \"e\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "e0dff3fc-8dda-4403-9f44-b81ff732c656",
+      "name": "Authorization",
+      "description": {
+        "content": "OAuth 2.0 authorization endpoint where the user authenticates.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0bccb841-b9d5-4868-85ff-51856e535fe9",
+          "name": "Start Authorization Flow",
+          "request": {
+            "name": "Start Authorization Flow",
+            "description": {
+              "content": "Begins the OIDC authorization code flow. The user is redirected to Login.gov, authenticates,\nconsents to the requested scopes, and is redirected back to `redirect_uri` with an\nauthorization `code` and the original `state` value.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "openid_connect",
+                "authorize"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "client_id",
+                  "value": "<string>",
+                  "description": "(Required) Registered relying party identifier."
+                },
+                {
+                  "disabled": false,
+                  "key": "response_type",
+                  "value": "<string>",
+                  "description": "(Required) Must be `code`. Implicit flow is not supported."
+                },
+                {
+                  "disabled": false,
+                  "key": "scope",
+                  "value": "<string>",
+                  "description": "(Required) Space-separated list of requested scopes. Must include `openid`."
+                },
+                {
+                  "disabled": false,
+                  "key": "redirect_uri",
+                  "value": "<uri>",
+                  "description": "(Required) Pre-registered redirect URI. Must match exactly."
+                },
+                {
+                  "disabled": false,
+                  "key": "nonce",
+                  "value": "<string>",
+                  "description": "(Required) Random string (minimum 22 characters) bound to the id_token to prevent replay."
+                },
+                {
+                  "disabled": false,
+                  "key": "state",
+                  "value": "<string>",
+                  "description": "(Required) Opaque value (minimum 22 characters) returned with the callback for CSRF protection and request/callback correlation."
+                },
+                {
+                  "disabled": false,
+                  "key": "prompt",
+                  "value": "<string>",
+                  "description": "(Required) Must be `select_account`."
+                },
+                {
+                  "disabled": false,
+                  "key": "acr_values",
+                  "value": "<string>",
+                  "description": "Requested authentication context. Combines a service level and an authenticator assurance level."
+                },
+                {
+                  "disabled": false,
+                  "key": "locale",
+                  "value": "<string>",
+                  "description": "Override the user's locale."
+                },
+                {
+                  "disabled": false,
+                  "key": "code_challenge",
+                  "value": "<string>",
+                  "description": "PKCE code challenge (base64url SHA-256 of `code_verifier`). Required for native apps using PKCE instead of private_key_jwt."
+                },
+                {
+                  "disabled": false,
+                  "key": "code_challenge_method",
+                  "value": "<string>",
+                  "description": "PKCE method. Login.gov supports `S256`."
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f5344aaf-f244-4ffd-bd3e-d54bf82a7712",
+              "name": "Redirect to Login.gov for authentication, then back to `redirect_uri` with `code` and `state`.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "openid_connect",
+                    "authorize"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "client_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "response_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "scope",
+                      "value": "openid email profile"
+                    },
+                    {
+                      "key": "redirect_uri",
+                      "value": "<uri>"
+                    },
+                    {
+                      "key": "nonce",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "prompt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "acr_values",
+                      "value": "urn:acr.login.gov:auth-only http://idmanagement.gov/ns/assurance/aal/2"
+                    },
+                    {
+                      "key": "locale",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "code_challenge",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "code_challenge_method",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Found",
+              "code": 302,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "0c02b636-bad6-43ef-b301-f162150f1fc5",
+      "name": "Token",
+      "description": {
+        "content": "Token exchange using private_key_jwt or PKCE.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ca63df8a-d16e-4a20-9374-c8cd822d2430",
+          "name": "Exchange Authorization Code for Tokens",
+          "request": {
+            "name": "Exchange Authorization Code for Tokens",
+            "description": {
+              "content": "Exchanges the authorization code for an `access_token` and a signed `id_token`. Web apps\nauthenticate using `private_key_jwt`; native apps use PKCE with a `code_verifier`.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "openid_connect",
+                "token"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "grant_type",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "code",
+                  "value": "<string>",
+                  "description": "(Required) Authorization code returned from `/openid_connect/authorize`."
+                },
+                {
+                  "disabled": false,
+                  "key": "client_assertion_type",
+                  "value": "<string>",
+                  "description": "Required for private_key_jwt clients."
+                },
+                {
+                  "disabled": false,
+                  "key": "client_assertion",
+                  "value": "<string>",
+                  "description": "Signed JWT (RS256) where `iss` and `sub` are `client_id`, `aud` is the token endpoint, and `jti`, `iat`, `exp` are set. Minimum 2048-bit key."
+                },
+                {
+                  "disabled": false,
+                  "key": "code_verifier",
+                  "value": "<string>",
+                  "description": "PKCE code verifier matching the original `code_challenge`. Used by native apps in lieu of `client_assertion`."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "55008f20-dfc9-4278-9daa-1d19c0b2e434",
+              "name": "Token response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "openid_connect",
+                    "token"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "grant_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Authorization code returned from `/openid_connect/authorize`.",
+                        "type": "text/plain"
+                      },
+                      "key": "code",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Required for private_key_jwt clients.",
+                        "type": "text/plain"
+                      },
+                      "key": "client_assertion_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Signed JWT (RS256) where `iss` and `sub` are `client_id`, `aud` is the token endpoint, and `jti`, `iat`, `exp` are set. Minimum 2048-bit key.",
+                        "type": "text/plain"
+                      },
+                      "key": "client_assertion",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "PKCE code verifier matching the original `code_challenge`. Used by native apps in lieu of `client_assertion`.",
+                        "type": "text/plain"
+                      },
+                      "key": "code_verifier",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"access_token\": \"string\",\n  \"token_type\": \"Bearer\",\n  \"expires_in\": 9837,\n  \"id_token\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "620af51f-00cd-48a1-b38f-d58d9f77476e",
+              "name": "Invalid request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "openid_connect",
+                    "token"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "grant_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Authorization code returned from `/openid_connect/authorize`.",
+                        "type": "text/plain"
+                      },
+                      "key": "code",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Required for private_key_jwt clients.",
+                        "type": "text/plain"
+                      },
+                      "key": "client_assertion_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Signed JWT (RS256) where `iss` and `sub` are `client_id`, `aud` is the token endpoint, and `jti`, `iat`, `exp` are set. Minimum 2048-bit key.",
+                        "type": "text/plain"
+                      },
+                      "key": "client_assertion",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "PKCE code verifier matching the original `code_challenge`. Used by native apps in lieu of `client_assertion`.",
+                        "type": "text/plain"
+                      },
+                      "key": "code_verifier",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"error_description\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "c960dded-54de-4f88-b258-a77b8c9dbd8d",
+      "name": "UserInfo",
+      "description": {
+        "content": "User attribute retrieval with a bearer access token.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8895f1af-50b0-435f-8ef4-40bc1c30ee98",
+          "name": "Get Authenticated User Attributes",
+          "request": {
+            "name": "Get Authenticated User Attributes",
+            "description": {
+              "content": "Returns user attributes consented to during authorization. Requires a bearer `access_token`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "openid_connect",
+                "userinfo"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6de348bf-dfc0-48e1-a1ab-7a10afe19816",
+              "name": "User attributes.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "openid_connect",
+                    "userinfo"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"sub\": \"string\",\n  \"iss\": \"http://koFxytbXgPjFyvEELLBiHnRQtp.dakENFjreAXHE0a28Z9g6sz\",\n  \"email\": \"Ajb4PEd8@FWOhcivummIAljxbdg.hk\",\n  \"email_verified\": true,\n  \"all_emails\": [\n    \"hMzUdBGBQq@NTxHJPNcEdSCCd.ard\",\n    \"EBL@mynEZEqxzczNWTqwMvyNBSr.fb\"\n  ],\n  \"locale\": \"string\",\n  \"ial\": \"string\",\n  \"aal\": \"string\",\n  \"given_name\": \"string\",\n  \"family_name\": \"string\",\n  \"address\": {\n    \"formatted\": \"string\",\n    \"street_address\": \"string\",\n    \"locality\": \"string\",\n    \"region\": \"string\",\n    \"postal_code\": \"string\",\n    \"country\": \"string\"\n  },\n  \"phone\": \"string\",\n  \"phone_verified\": false,\n  \"birthdate\": \"2017-12-06\",\n  \"social_security_number\": \"string\",\n  \"verified_at\": 2435,\n  \"x509_subject\": \"string\",\n  \"x509_issuer\": \"string\",\n  \"x509_presented\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "42d979d9-aac3-4ac3-a485-9b657fe40ff3",
+              "name": "Invalid or expired access token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "openid_connect",
+                    "userinfo"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"error_description\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "fa95536e-5f3a-494a-b0d9-facf33070b3b",
+      "name": "Logout",
+      "description": {
+        "content": "RP-initiated logout and session termination.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a700891f-dffc-426e-9dbb-75ee8a71f607",
+          "name": "RP-Initiated Logout",
+          "request": {
+            "name": "RP-Initiated Logout",
+            "description": {
+              "content": "Ends the user's Login.gov session. After confirmation the browser is redirected to the\npre-registered `post_logout_redirect_uri` with the original `state` value.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "openid_connect",
+                "logout"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "client_id",
+                  "value": "<string>",
+                  "description": "(Required) Registered relying party identifier."
+                },
+                {
+                  "disabled": false,
+                  "key": "post_logout_redirect_uri",
+                  "value": "<uri>",
+                  "description": "(Required) Pre-registered post-logout redirect URI."
+                },
+                {
+                  "disabled": false,
+                  "key": "state",
+                  "value": "<string>",
+                  "description": "Opaque value (minimum 22 characters) echoed back to `post_logout_redirect_uri`."
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "58e742a9-b01d-440d-b470-18a0c68f8901",
+              "name": "Redirect back to `post_logout_redirect_uri` after the user confirms logout.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "openid_connect",
+                    "logout"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "client_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "post_logout_redirect_uri",
+                      "value": "<uri>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Found",
+              "code": 302,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://idp.int.identitysandbox.gov",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "4ddae4ac-b92b-4c9b-a3ad-ee8cdce5e166",
+    "name": "Login.gov OpenID Connect API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Login.gov is the U.S. federal government's secure single sign-on service for public-facing\ngovernment applications, operated by the General Services Administration's Technology\nTransformation Services. This OpenAPI describes the OpenID Connect (OIDC) integration\nsurface used by relying parties (service providers) to authenticate users at IAL1 (auth\nonly) and IAL2 (identity-verified) assurance levels.\n\nLogin.gov conforms to the iGov OpenID Connect Profile. Implicit flow is not supported.\nClient authentication uses private_key_jwt (preferred for web apps) or PKCE\n(preferred for native mobile apps).\n\n\nContact Support:\n Name: Login.gov Partner Support\n Email: partners@login.gov",
+      "type": "text/plain"
+    }
+  }
+}

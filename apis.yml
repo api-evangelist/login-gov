@@ -1,161 +1,157 @@
 aid: login-gov
 name: Login.gov
-description: Login.gov is the U.S. federal government's secure single sign-on and identity verification service for the public, operated by the General Services Administration's Technology Transformation Services (GSA TTS). Relying parties — federal, and in some cases state and local — federate user authentication to Login.gov via OpenID Connect (iGov profile) or SAML 2.0, with support for IAL1 (auth-only) and IAL2 (identity-verified) assurance and AAL2 multi-factor authentication including phishing-resistant and PIV/CAC authenticators.
+description: >-
+  Login.gov is the U.S. federal government's secure single sign-on and identity verification service for the public,
+  operated by the General Services Administration's Technology Transformation Services (GSA TTS). Relying parties —
+  federal, and in some cases state and local — federate user authentication to Login.gov via OpenID Connect (iGov
+  profile) or SAML 2.0, with support for IAL1 (auth-only) and IAL2 (identity-verified) assurance and AAL2 multi-factor
+  authentication including phishing-resistant and PIV/CAC authenticators.
 type: Index
 position: Consumer
 access: 3rd-Party
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-- Government
-- Federal
-- GSA
-- Identity
-- Authentication
-- SSO
-- OIDC
-- SAML
-- IAL2
-- AAL2
+  - Government
+  - Federal
+  - GSA
+  - Identity
+  - Authentication
+  - SSO
+  - OIDC
+  - SAML
+  - IAL2
+  - AAL2
 created: '2026-05-25'
 modified: '2026-05-25'
 url: https://raw.githubusercontent.com/api-evangelist/login-gov/refs/heads/main/apis.yml
 specificationVersion: '0.19'
 apis:
-- aid: login-gov:login-gov-oidc-api
-  name: Login.gov OpenID Connect API
-  description: |
-    The Login.gov OIDC integration surface used by relying parties. Conforms to the
-    iGov OpenID Connect Profile. Supports authorization code flow with
-    private_key_jwt (web apps) or PKCE (native apps); implicit flow is not supported.
-    Exposes discovery, JWKS, authorize, token, userinfo, and RP-initiated logout
-    endpoints in both sandbox (idp.int.identitysandbox.gov) and production
-    (secure.login.gov).
-  humanURL: https://developers.login.gov/oidc/
-  baseURL: https://secure.login.gov
-  tags:
-  - OIDC
-  - OpenID Connect
-  - Authentication
-  - SSO
-  - Federal
-  properties:
-  - type: Documentation
-    url: https://developers.login.gov/oidc/
-  - type: Documentation
-    url: https://developers.login.gov/oidc/getting-started/
-  - type: Documentation
-    url: https://developers.login.gov/oidc/authorization/
-  - type: Documentation
-    url: https://developers.login.gov/oidc/token/
-  - type: Documentation
-    url: https://developers.login.gov/oidc/user-info/
-  - type: Documentation
-    url: https://developers.login.gov/oidc/logout/
-  - type: Documentation
-    url: https://developers.login.gov/oidc/certificates/
-  - type: SignUp
-    url: https://portal.int.identitysandbox.gov
-  - type: OpenAPI
-    url: openapi/login-gov-oidc-openapi.yml
-  - type: JSONSchema
-    url: json-schema/login-gov-userinfo-schema.json
-  - type: JSONSchema
-    url: json-schema/login-gov-id-token-schema.json
-  - type: JSONLD
-    url: json-ld/login-gov-context.jsonld
-  - type: NaftikoCapability
-    url: capabilities/oidc-authentication.yaml
-  - type: SpectralRuleset
-    url: rules/login-gov-rules.yml
-
-- aid: login-gov:login-gov-saml-api
-  name: Login.gov SAML 2.0 API
-  description: |
-    SAML 2.0 federation surface for relying parties that prefer SAML over OIDC. Uses
-    HTTP-Redirect SSO and HTTP-POST SLO with the persistent NameID format (UUID v4).
-    Endpoints are year-versioned (2026 = certificates valid through April 1, 2027).
-    Metadata is published; clients should consume it dynamically to handle annual
-    certificate rotations.
-  humanURL: https://developers.login.gov/saml/
-  baseURL: https://secure.login.gov
-  tags:
-  - SAML
-  - Authentication
-  - SSO
-  - Federal
-  properties:
-  - type: Documentation
-    url: https://developers.login.gov/saml/
-  - type: Documentation
-    url: https://developers.login.gov/saml/getting-started/
-  - type: OpenAPI
-    url: openapi/login-gov-saml-openapi.yml
-  - type: NaftikoCapability
-    url: capabilities/saml-authentication.yaml
-
+  - aid: login-gov:login-gov-oidc-api
+    name: Login.gov OpenID Connect API
+    description: |
+      The Login.gov OIDC integration surface used by relying parties. Conforms to the
+      iGov OpenID Connect Profile. Supports authorization code flow with
+      private_key_jwt (web apps) or PKCE (native apps); implicit flow is not supported.
+      Exposes discovery, JWKS, authorize, token, userinfo, and RP-initiated logout
+      endpoints in both sandbox (idp.int.identitysandbox.gov) and production
+      (secure.login.gov).
+    humanURL: https://developers.login.gov/oidc/
+    baseURL: https://secure.login.gov
+    tags:
+      - OIDC
+      - OpenID Connect
+      - Authentication
+      - SSO
+      - Federal
+    properties:
+      - type: Documentation
+        url: https://developers.login.gov/oidc/
+      - type: Documentation
+        url: https://developers.login.gov/oidc/getting-started/
+      - type: Documentation
+        url: https://developers.login.gov/oidc/authorization/
+      - type: Documentation
+        url: https://developers.login.gov/oidc/token/
+      - type: Documentation
+        url: https://developers.login.gov/oidc/user-info/
+      - type: Documentation
+        url: https://developers.login.gov/oidc/logout/
+      - type: Documentation
+        url: https://developers.login.gov/oidc/certificates/
+      - type: SignUp
+        url: https://portal.int.identitysandbox.gov
+      - type: OpenAPI
+        url: openapi/login-gov-oidc-openapi.yml
+      - type: JSONSchema
+        url: json-schema/login-gov-userinfo-schema.json
+      - type: JSONSchema
+        url: json-schema/login-gov-id-token-schema.json
+      - type: JSONLD
+        url: json-ld/login-gov-context.jsonld
+      - type: SpectralRuleset
+        url: rules/login-gov-rules.yml
+  - aid: login-gov:login-gov-saml-api
+    name: Login.gov SAML 2.0 API
+    description: |
+      SAML 2.0 federation surface for relying parties that prefer SAML over OIDC. Uses
+      HTTP-Redirect SSO and HTTP-POST SLO with the persistent NameID format (UUID v4).
+      Endpoints are year-versioned (2026 = certificates valid through April 1, 2027).
+      Metadata is published; clients should consume it dynamically to handle annual
+      certificate rotations.
+    humanURL: https://developers.login.gov/saml/
+    baseURL: https://secure.login.gov
+    tags:
+      - SAML
+      - Authentication
+      - SSO
+      - Federal
+    properties:
+      - type: Documentation
+        url: https://developers.login.gov/saml/
+      - type: Documentation
+        url: https://developers.login.gov/saml/getting-started/
+      - type: OpenAPI
+        url: openapi/login-gov-saml-openapi.yml
 common:
-- type: Website
-  url: https://www.login.gov
-- type: Portal
-  url: https://www.login.gov/partners
-- type: Documentation
-  url: https://developers.login.gov
-- type: SignUp
-  url: https://www.login.gov/partners/get-started/
-- type: GettingStarted
-  url: https://developers.login.gov/oidc/getting-started/
-- type: Sandbox
-  url: https://portal.int.identitysandbox.gov
-- type: GitHubOrganization
-  url: https://github.com/18F
-- type: GitHubRepository
-  name: identity-idp
-  url: https://github.com/18F/identity-idp
-- type: GitHubRepository
-  name: identity-oidc-sinatra (sample relying party)
-  url: https://github.com/18F/identity-oidc-sinatra
-- type: GitHubRepository
-  name: identity-saml-sinatra (sample relying party)
-  url: https://github.com/18F/identity-saml-sinatra
-- type: StatusPage
-  url: https://status.login.gov
-- type: Blog
-  url: https://www.login.gov/about/news/
-- type: Contact
-  url: https://www.login.gov/contact/
-- type: BusinessInquiries
-  url: https://www.login.gov/partners/business-inquiries/
-- type: Privacy
-  url: https://www.login.gov/policy/
-- type: Accessibility
-  url: https://www.login.gov/accessibility/
-- type: Plans
-  url: plans/login-gov-plans-pricing.yml
-- type: RateLimits
-  url: rate-limits/login-gov-rate-limits.yml
-- type: Vocabulary
-  url: vocabulary/login-gov-vocabulary.yml
-- type: Features
-  data:
-  - Single account for the public to access participating federal services
-  - OpenID Connect (iGov profile) and SAML 2.0 federation
-  - Authorization code flow with private_key_jwt or PKCE; implicit flow not supported
-  - IAL1 (authentication only) and IAL2 (identity-verified) assurance levels
-  - AAL2 with TOTP, SMS/voice, push, security keys, PIV/CAC, and platform passkeys
-  - Phishing-resistant AAL2 variant and HSPD-12 (PIV/CAC) AAL2 variant
-  - Identity proofing with optional facial-match step
-  - Self-service Partner Portal (sandbox and production) for client registration and scope/cert management
-  - JWKS endpoint with at-least-annual key rotation; SAML certs rotated yearly with year-versioned endpoints
-  - User attributes scoped per OIDC scope/SAML attribute: email, all_emails, name, address, birthdate, phone, SSN, verified_at, locale, x509 subject/issuer/presented
-  - Built and operated in the open: identity-idp (Ruby on Rails) and sample SP apps published under github.com/18F
-  - English, Spanish, and French locales
-  - Section 508 accessibility commitment; published privacy policy and PIA
-  - Cost-recoverable funding model via Interagency Agreement (IAA); no public rate card
-
-position: Consuming
-
+  - type: Website
+    url: https://www.login.gov
+  - type: Portal
+    url: https://www.login.gov/partners
+  - type: Documentation
+    url: https://developers.login.gov
+  - type: SignUp
+    url: https://www.login.gov/partners/get-started/
+  - type: GettingStarted
+    url: https://developers.login.gov/oidc/getting-started/
+  - type: Sandbox
+    url: https://portal.int.identitysandbox.gov
+  - type: GitHubOrganization
+    url: https://github.com/18F
+  - type: GitHubRepository
+    name: identity-idp
+    url: https://github.com/18F/identity-idp
+  - type: GitHubRepository
+    name: identity-oidc-sinatra (sample relying party)
+    url: https://github.com/18F/identity-oidc-sinatra
+  - type: GitHubRepository
+    name: identity-saml-sinatra (sample relying party)
+    url: https://github.com/18F/identity-saml-sinatra
+  - type: StatusPage
+    url: https://status.login.gov
+  - type: Blog
+    url: https://www.login.gov/about/news/
+  - type: Contact
+    url: https://www.login.gov/contact/
+  - type: BusinessInquiries
+    url: https://www.login.gov/partners/business-inquiries/
+  - type: Privacy
+    url: https://www.login.gov/policy/
+  - type: Accessibility
+    url: https://www.login.gov/accessibility/
+  - type: Plans
+    url: plans/login-gov-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/login-gov-rate-limits.yml
+  - type: Vocabulary
+    url: vocabulary/login-gov-vocabulary.yml
+  - type: Features
+    data:
+      - Single account for the public to access participating federal services
+      - OpenID Connect (iGov profile) and SAML 2.0 federation
+      - Authorization code flow with private_key_jwt or PKCE; implicit flow not supported
+      - IAL1 (authentication only) and IAL2 (identity-verified) assurance levels
+      - AAL2 with TOTP, SMS/voice, push, security keys, PIV/CAC, and platform passkeys
+      - Phishing-resistant AAL2 variant and HSPD-12 (PIV/CAC) AAL2 variant
+      - Identity proofing with optional facial-match step
+      - Self-service Partner Portal (sandbox and production) for client registration and scope/cert management
+      - JWKS endpoint with at-least-annual key rotation; SAML certs rotated yearly with year-versioned endpoints
+      - User attributes scoped per OIDC scope/SAML attribute: email, all_emails, name, address, birthdate, phone, SSN, verified_at, locale, x509 subject/issuer/presented
+      - Built and operated in the open: identity-idp (Ruby on Rails) and sample SP apps published under github.com/18F
+      - English, Spanish, and French locales
+      - Section 508 accessibility commitment; published privacy policy and PIA
+      - Cost-recoverable funding model via Interagency Agreement (IAA); no public rate card
 maintainers:
-- FN: Kin Lane
-  email: info@apievangelist.com
-  X: apievangelist
-  url: https://apievangelist.com
+  - FN: Kin Lane
+    email: info@apievangelist.com
+    X: apievangelist
+    url: https://apievangelist.com

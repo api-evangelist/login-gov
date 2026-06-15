@@ -1,0 +1,106 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Login.gov SAML 2.0 API",
+    "version": "2026-01"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Metadata",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get SAML 2.0 IdP Metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://idp.int.identitysandbox.gov/api/saml/metadata2026"
+          },
+          "docs": "Returns the SAML 2.0 IdP metadata XML including entity ID, SSO/SLO endpoints, signing certificate, and supported NameID formats."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Authentication",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Initiate SAML SSO (HTTP-Redirect)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://idp.int.identitysandbox.gov/api/saml/auth2026",
+            "params": [
+              {
+                "name": "SAMLRequest",
+                "value": "",
+                "type": "query",
+                "description": "Base64-encoded DEFLATE-compressed AuthnRequest."
+              },
+              {
+                "name": "RelayState",
+                "value": "",
+                "type": "query",
+                "description": "Opaque value echoed back in the SAML response."
+              },
+              {
+                "name": "SigAlg",
+                "value": "",
+                "type": "query",
+                "description": "Signature algorithm URI when the request is signed."
+              },
+              {
+                "name": "Signature",
+                "value": "",
+                "type": "query",
+                "description": "Base64-encoded signature over the request."
+              }
+            ]
+          },
+          "docs": "Accepts a Base64-encoded, DEFLATE-compressed `SAMLRequest` via HTTP-Redirect.\nThe user authenticates with Login.gov and the IdP responds with a signed SAML\nassertion POSTed to the SP's Assertion Consumer Service URL.\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Logout",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "SAML Single Logout (HTTP-POST)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://idp.int.identitysandbox.gov/api/saml/logout2026",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "SAMLRequest",
+                  "value": ""
+                },
+                {
+                  "name": "RelayState",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Accepts a signed `LogoutRequest` from the SP and terminates the user's Login.gov session."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

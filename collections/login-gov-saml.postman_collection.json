@@ -1,0 +1,382 @@
+{
+  "item": [
+    {
+      "id": "8b584041-053b-4f96-91c2-8b65c4917142",
+      "name": "Metadata",
+      "description": {
+        "content": "SAML 2.0 IdP metadata.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "905c7a6b-70fb-4833-892c-a714c1a2a476",
+          "name": "Get SAML 2.0 IdP Metadata",
+          "request": {
+            "name": "Get SAML 2.0 IdP Metadata",
+            "description": {
+              "content": "Returns the SAML 2.0 IdP metadata XML including entity ID, SSO/SLO endpoints, signing certificate, and supported NameID formats.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "saml",
+                "metadata2026"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/samlmetadata+xml"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d607f769-4677-4429-9c8f-181b1a80e68c",
+              "name": "SAML metadata document.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "saml",
+                    "metadata2026"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/samlmetadata+xml"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "c75dc7f3-db6c-4422-aaf2-b005534138c8",
+      "name": "Authentication",
+      "description": {
+        "content": "SAML SSO request endpoint.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a11039d0-7384-4cd2-8d6f-23f19cd60eb4",
+          "name": "Initiate SAML SSO (HTTP-Redirect)",
+          "request": {
+            "name": "Initiate SAML SSO (HTTP-Redirect)",
+            "description": {
+              "content": "Accepts a Base64-encoded, DEFLATE-compressed `SAMLRequest` via HTTP-Redirect.\nThe user authenticates with Login.gov and the IdP responds with a signed SAML\nassertion POSTed to the SP's Assertion Consumer Service URL.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "saml",
+                "auth2026"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "SAMLRequest",
+                  "value": "<string>",
+                  "description": "(Required) Base64-encoded DEFLATE-compressed AuthnRequest."
+                },
+                {
+                  "disabled": false,
+                  "key": "RelayState",
+                  "value": "<string>",
+                  "description": "Opaque value echoed back in the SAML response."
+                },
+                {
+                  "disabled": false,
+                  "key": "SigAlg",
+                  "value": "<string>",
+                  "description": "Signature algorithm URI when the request is signed."
+                },
+                {
+                  "disabled": false,
+                  "key": "Signature",
+                  "value": "<string>",
+                  "description": "Base64-encoded signature over the request."
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "21245ce5-1454-4e01-8ee3-2247dc4b4d9a",
+              "name": "Login.gov sign-in UI is rendered to the end user.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "saml",
+                    "auth2026"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "SAMLRequest",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "RelayState",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "SigAlg",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "Signature",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b881d500-85fb-4ce2-8530-75a9e8133a0e",
+              "name": "Redirect to authentication challenge or to SP ACS with the signed SAML response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "saml",
+                    "auth2026"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "SAMLRequest",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "RelayState",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "SigAlg",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "Signature",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Found",
+              "code": 302,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "8af8cc28-7ab1-4fe0-af41-3d34d9bdf13e",
+      "name": "Logout",
+      "description": {
+        "content": "SAML Single Logout endpoint.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d57a734d-763f-4f22-b8a8-71570b8ded83",
+          "name": "SAML Single Logout (HTTP-POST)",
+          "request": {
+            "name": "SAML Single Logout (HTTP-POST)",
+            "description": {
+              "content": "Accepts a signed `LogoutRequest` from the SP and terminates the user's Login.gov session.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "saml",
+                "logout2026"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "SAMLRequest",
+                  "value": "<string>",
+                  "description": "(Required) Base64-encoded SAML LogoutRequest."
+                },
+                {
+                  "disabled": false,
+                  "key": "RelayState",
+                  "value": "<string>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c108508d-93db-4b9d-9593-8b03b63bdb60",
+              "name": "LogoutResponse posted back to the SP's SLO endpoint.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "saml",
+                    "logout2026"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Base64-encoded SAML LogoutRequest.",
+                        "type": "text/plain"
+                      },
+                      "key": "SAMLRequest",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "RelayState",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://idp.int.identitysandbox.gov",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "15bd8794-54cf-4048-af76-0bfea707ff48",
+    "name": "Login.gov SAML 2.0 API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Login.gov also supports SAML 2.0 for relying parties that prefer enterprise federation\nsemantics over OIDC. SAML endpoints are versioned by certificate year (the `2026` suffix\ncorresponds to certificates valid through April 1, 2027). The persistent NameID format\nissues a per-RP UUID v4.\n\nThe SSO endpoint accepts the HTTP-Redirect binding; SLO uses HTTP-POST. Login.gov's\nSAML certificates are published in the metadata endpoint and should be loaded\ndynamically so that annual rotations do not require code changes.\n\n\nContact Support:\n Name: Login.gov Partner Support\n Email: partners@login.gov",
+      "type": "text/plain"
+    }
+  }
+}
