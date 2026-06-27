@@ -58,7 +58,7 @@ apis:
         url: https://developers.login.gov/oidc/logout/
       - type: Documentation
         url: https://developers.login.gov/oidc/certificates/
-      - type: SignUp
+      - type: Signup
         url: https://portal.int.identitysandbox.gov
       - type: OpenAPI
         url: openapi/login-gov-oidc-openapi.yml
@@ -99,7 +99,7 @@ common:
     url: https://www.login.gov/partners
   - type: Documentation
     url: https://developers.login.gov
-  - type: SignUp
+  - type: Signup
     url: https://www.login.gov/partners/get-started/
   - type: GettingStarted
     url: https://developers.login.gov/oidc/getting-started/
