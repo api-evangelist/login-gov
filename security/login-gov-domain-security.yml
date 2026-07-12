@@ -1,0 +1,32 @@
+generated: '2026-07-11'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: www.login.gov
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Oct  4 10:20:38 2026 GMT
+  hsts: true
+  hsts_max_age: 31536000
+- host: developers.login.gov
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Aug 14 13:21:19 2026 GMT
+  hsts: true
+  hsts_max_age: 31536000
+- host: secure.login.gov
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Oct  8 23:59:59 2026 GMT
+  hsts: true
+  hsts_max_age: 31556952
+domains:
+- domain: login.gov
+  dnssec: true
+  caa:
+  - 0 issue "letsencrypt.org"
+  - 0 iodef "mailto:security@login.gov"
+  - 0 issue "amazon.com"
+  spf: true
+  dmarc: true
+  dmarc_policy: reject
