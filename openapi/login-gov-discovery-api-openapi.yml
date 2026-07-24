@@ -1,0 +1,147 @@
+openapi: 3.1.0
+info:
+  title: Login.gov OpenID Connect Authentication Discovery API
+  version: 2026-01
+  description: 'Login.gov is the U.S. federal government''s secure single sign-on service for public-facing
+
+    government applications, operated by the General Services Administration''s Technology
+
+    Transformation Services. This OpenAPI describes the OpenID Connect (OIDC) integration
+
+    surface used by relying parties (service providers) to authenticate users at IAL1 (auth
+
+    only) and IAL2 (identity-verified) assurance levels.
+
+
+    Login.gov conforms to the iGov OpenID Connect Profile. Implicit flow is not supported.
+
+    Client authentication uses private_key_jwt (preferred for web apps) or PKCE
+
+    (preferred for native mobile apps).
+
+    '
+  contact:
+    name: Login.gov Partner Support
+    url: https://developers.login.gov
+    email: partners@login.gov
+  license:
+    name: Public Domain (U.S. Government Work)
+    url: https://www.usa.gov/government-works
+servers:
+- url: https://idp.int.identitysandbox.gov
+  description: Sandbox (integration) environment
+- url: https://secure.login.gov
+  description: Production environment
+tags:
+- name: Discovery
+  description: OIDC discovery and public key endpoints.
+paths:
+  /.well-known/openid-configuration:
+    get:
+      tags:
+      - Discovery
+      summary: Get OIDC Discovery Document
+      operationId: getOpenidConfiguration
+      description: Returns the OpenID Connect discovery document listing supported endpoints, scopes, response types, claims, and acr_values.
+      responses:
+        '200':
+          description: Discovery metadata.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DiscoveryDocument'
+  /api/openid_connect/certs:
+    get:
+      tags:
+      - Discovery
+      summary: Get JWKS Signing Keys
+      operationId: getJwks
+      description: Returns Login.gov's public signing key(s) in JWK Set format. Keys are rotated at least annually; clients should fetch dynamically rather than hard-coding.
+      responses:
+        '200':
+          description: JSON Web Key Set.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JwkSet'
+components:
+  schemas:
+    JwkSet:
+      type: object
+      properties:
+        keys:
+          type: array
+          items:
+            $ref: '#/components/schemas/Jwk'
+    Jwk:
+      type: object
+      properties:
+        kty:
+          type: string
+          example: RSA
+        kid:
+          type: string
+        use:
+          type: string
+          example: sig
+        alg:
+          type: string
+          example: RS256
+        n:
+          type: string
+        e:
+          type: string
+    DiscoveryDocument:
+      type: object
+      properties:
+        issuer:
+          type: string
+          example: https://idp.int.identitysandbox.gov
+        authorization_endpoint:
+          type: string
+          format: uri
+        token_endpoint:
+          type: string
+          format: uri
+        userinfo_endpoint:
+          type: string
+          format: uri
+        end_session_endpoint:
+          type: string
+          format: uri
+        jwks_uri:
+          type: string
+          format: uri
+        scopes_supported:
+          type: array
+          items:
+            type: string
+        response_types_supported:
+          type: array
+          items:
+            type: string
+        acr_values_supported:
+          type: array
+          items:
+            type: string
+        token_endpoint_auth_methods_supported:
+          type: array
+          items:
+            type: string
+        id_token_signing_alg_values_supported:
+          type: array
+          items:
+            type: string
+        subject_types_supported:
+          type: array
+          items:
+            type: string
+        claims_supported:
+          type: array
+          items:
+            type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: opaque

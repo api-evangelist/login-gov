@@ -1,0 +1,121 @@
+openapi: 3.1.0
+info:
+  title: Login.gov OpenID Connect Authentication Token API
+  version: 2026-01
+  description: 'Login.gov is the U.S. federal government''s secure single sign-on service for public-facing
+
+    government applications, operated by the General Services Administration''s Technology
+
+    Transformation Services. This OpenAPI describes the OpenID Connect (OIDC) integration
+
+    surface used by relying parties (service providers) to authenticate users at IAL1 (auth
+
+    only) and IAL2 (identity-verified) assurance levels.
+
+
+    Login.gov conforms to the iGov OpenID Connect Profile. Implicit flow is not supported.
+
+    Client authentication uses private_key_jwt (preferred for web apps) or PKCE
+
+    (preferred for native mobile apps).
+
+    '
+  contact:
+    name: Login.gov Partner Support
+    url: https://developers.login.gov
+    email: partners@login.gov
+  license:
+    name: Public Domain (U.S. Government Work)
+    url: https://www.usa.gov/government-works
+servers:
+- url: https://idp.int.identitysandbox.gov
+  description: Sandbox (integration) environment
+- url: https://secure.login.gov
+  description: Production environment
+tags:
+- name: Token
+  description: Token exchange using private_key_jwt or PKCE.
+paths:
+  /api/openid_connect/token:
+    post:
+      tags:
+      - Token
+      summary: Exchange Authorization Code for Tokens
+      operationId: exchangeToken
+      description: 'Exchanges the authorization code for an `access_token` and a signed `id_token`. Web apps
+
+        authenticate using `private_key_jwt`; native apps use PKCE with a `code_verifier`.
+
+        '
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TokenRequest'
+      responses:
+        '200':
+          description: Token response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenResponse'
+        '400':
+          description: Invalid request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    TokenRequest:
+      type: object
+      required:
+      - grant_type
+      - code
+      properties:
+        grant_type:
+          type: string
+          enum:
+          - authorization_code
+        code:
+          type: string
+          description: Authorization code returned from `/openid_connect/authorize`.
+        client_assertion_type:
+          type: string
+          description: Required for private_key_jwt clients.
+          enum:
+          - urn:ietf:params:oauth:client-assertion-type:jwt-bearer
+        client_assertion:
+          type: string
+          description: Signed JWT (RS256) where `iss` and `sub` are `client_id`, `aud` is the token endpoint, and `jti`, `iat`, `exp` are set. Minimum 2048-bit key.
+        code_verifier:
+          type: string
+          description: PKCE code verifier matching the original `code_challenge`. Used by native apps in lieu of `client_assertion`.
+    TokenResponse:
+      type: object
+      properties:
+        access_token:
+          type: string
+          description: Opaque bearer token for the userinfo endpoint.
+        token_type:
+          type: string
+          example: Bearer
+        expires_in:
+          type: integer
+          description: Lifetime of the access token in seconds.
+        id_token:
+          type: string
+          description: Signed JWT (RS256) carrying authenticated user identity claims.
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+        error_description:
+          type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: opaque

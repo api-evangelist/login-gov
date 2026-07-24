@@ -1,0 +1,103 @@
+openapi: 3.1.0
+info:
+  title: Login.gov OpenID Connect Authentication Logout API
+  version: 2026-01
+  description: 'Login.gov is the U.S. federal government''s secure single sign-on service for public-facing
+
+    government applications, operated by the General Services Administration''s Technology
+
+    Transformation Services. This OpenAPI describes the OpenID Connect (OIDC) integration
+
+    surface used by relying parties (service providers) to authenticate users at IAL1 (auth
+
+    only) and IAL2 (identity-verified) assurance levels.
+
+
+    Login.gov conforms to the iGov OpenID Connect Profile. Implicit flow is not supported.
+
+    Client authentication uses private_key_jwt (preferred for web apps) or PKCE
+
+    (preferred for native mobile apps).
+
+    '
+  contact:
+    name: Login.gov Partner Support
+    url: https://developers.login.gov
+    email: partners@login.gov
+  license:
+    name: Public Domain (U.S. Government Work)
+    url: https://www.usa.gov/government-works
+servers:
+- url: https://idp.int.identitysandbox.gov
+  description: Sandbox (integration) environment
+- url: https://secure.login.gov
+  description: Production environment
+tags:
+- name: Logout
+  description: RP-initiated logout and session termination.
+paths:
+  /openid_connect/logout:
+    get:
+      tags:
+      - Logout
+      summary: RP-Initiated Logout
+      operationId: logout
+      description: 'Ends the user''s Login.gov session. After confirmation the browser is redirected to the
+
+        pre-registered `post_logout_redirect_uri` with the original `state` value.
+
+        '
+      parameters:
+      - name: client_id
+        in: query
+        required: true
+        description: Registered relying party identifier.
+        schema:
+          type: string
+      - name: post_logout_redirect_uri
+        in: query
+        required: true
+        description: Pre-registered post-logout redirect URI.
+        schema:
+          type: string
+          format: uri
+      - name: state
+        in: query
+        required: false
+        description: Opaque value (minimum 22 characters) echoed back to `post_logout_redirect_uri`.
+        schema:
+          type: string
+          minLength: 22
+      responses:
+        '302':
+          description: Redirect back to `post_logout_redirect_uri` after the user confirms logout.
+  /api/saml/logout2026:
+    post:
+      tags:
+      - Logout
+      summary: SAML Single Logout (HTTP-POST)
+      operationId: samlSlo
+      description: Accepts a signed `LogoutRequest` from the SP and terminates the user's Login.gov session.
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - SAMLRequest
+              properties:
+                SAMLRequest:
+                  type: string
+                  description: Base64-encoded SAML LogoutRequest.
+                RelayState:
+                  type: string
+      responses:
+        '200':
+          description: LogoutResponse posted back to the SP's SLO endpoint.
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: opaque

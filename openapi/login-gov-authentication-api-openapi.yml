@@ -1,0 +1,87 @@
+openapi: 3.1.0
+info:
+  title: Login.gov OpenID Connect Authentication API
+  version: 2026-01
+  description: 'Login.gov is the U.S. federal government''s secure single sign-on service for public-facing
+
+    government applications, operated by the General Services Administration''s Technology
+
+    Transformation Services. This OpenAPI describes the OpenID Connect (OIDC) integration
+
+    surface used by relying parties (service providers) to authenticate users at IAL1 (auth
+
+    only) and IAL2 (identity-verified) assurance levels.
+
+
+    Login.gov conforms to the iGov OpenID Connect Profile. Implicit flow is not supported.
+
+    Client authentication uses private_key_jwt (preferred for web apps) or PKCE
+
+    (preferred for native mobile apps).
+
+    '
+  contact:
+    name: Login.gov Partner Support
+    url: https://developers.login.gov
+    email: partners@login.gov
+  license:
+    name: Public Domain (U.S. Government Work)
+    url: https://www.usa.gov/government-works
+servers:
+- url: https://idp.int.identitysandbox.gov
+  description: Sandbox (integration) environment
+- url: https://secure.login.gov
+  description: Production environment
+tags:
+- name: Authentication
+  description: SAML SSO request endpoint.
+paths:
+  /api/saml/auth2026:
+    get:
+      tags:
+      - Authentication
+      summary: Initiate SAML SSO (HTTP-Redirect)
+      operationId: samlSso
+      description: 'Accepts a Base64-encoded, DEFLATE-compressed `SAMLRequest` via HTTP-Redirect.
+
+        The user authenticates with Login.gov and the IdP responds with a signed SAML
+
+        assertion POSTed to the SP''s Assertion Consumer Service URL.
+
+        '
+      parameters:
+      - name: SAMLRequest
+        in: query
+        required: true
+        description: Base64-encoded DEFLATE-compressed AuthnRequest.
+        schema:
+          type: string
+      - name: RelayState
+        in: query
+        required: false
+        description: Opaque value echoed back in the SAML response.
+        schema:
+          type: string
+      - name: SigAlg
+        in: query
+        required: false
+        description: Signature algorithm URI when the request is signed.
+        schema:
+          type: string
+      - name: Signature
+        in: query
+        required: false
+        description: Base64-encoded signature over the request.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Login.gov sign-in UI is rendered to the end user.
+        '302':
+          description: Redirect to authentication challenge or to SP ACS with the signed SAML response.
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: opaque

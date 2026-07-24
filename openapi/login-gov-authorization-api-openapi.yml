@@ -1,0 +1,141 @@
+openapi: 3.1.0
+info:
+  title: Login.gov OpenID Connect Authentication Authorization API
+  version: 2026-01
+  description: 'Login.gov is the U.S. federal government''s secure single sign-on service for public-facing
+
+    government applications, operated by the General Services Administration''s Technology
+
+    Transformation Services. This OpenAPI describes the OpenID Connect (OIDC) integration
+
+    surface used by relying parties (service providers) to authenticate users at IAL1 (auth
+
+    only) and IAL2 (identity-verified) assurance levels.
+
+
+    Login.gov conforms to the iGov OpenID Connect Profile. Implicit flow is not supported.
+
+    Client authentication uses private_key_jwt (preferred for web apps) or PKCE
+
+    (preferred for native mobile apps).
+
+    '
+  contact:
+    name: Login.gov Partner Support
+    url: https://developers.login.gov
+    email: partners@login.gov
+  license:
+    name: Public Domain (U.S. Government Work)
+    url: https://www.usa.gov/government-works
+servers:
+- url: https://idp.int.identitysandbox.gov
+  description: Sandbox (integration) environment
+- url: https://secure.login.gov
+  description: Production environment
+tags:
+- name: Authorization
+  description: OAuth 2.0 authorization endpoint where the user authenticates.
+paths:
+  /openid_connect/authorize:
+    get:
+      tags:
+      - Authorization
+      summary: Start Authorization Flow
+      operationId: authorize
+      description: 'Begins the OIDC authorization code flow. The user is redirected to Login.gov, authenticates,
+
+        consents to the requested scopes, and is redirected back to `redirect_uri` with an
+
+        authorization `code` and the original `state` value.
+
+        '
+      parameters:
+      - name: client_id
+        in: query
+        required: true
+        description: Registered relying party identifier.
+        schema:
+          type: string
+      - name: response_type
+        in: query
+        required: true
+        description: Must be `code`. Implicit flow is not supported.
+        schema:
+          type: string
+          enum:
+          - code
+      - name: scope
+        in: query
+        required: true
+        description: Space-separated list of requested scopes. Must include `openid`.
+        schema:
+          type: string
+          example: openid email profile
+      - name: redirect_uri
+        in: query
+        required: true
+        description: Pre-registered redirect URI. Must match exactly.
+        schema:
+          type: string
+          format: uri
+      - name: nonce
+        in: query
+        required: true
+        description: Random string (minimum 22 characters) bound to the id_token to prevent replay.
+        schema:
+          type: string
+          minLength: 22
+      - name: state
+        in: query
+        required: true
+        description: Opaque value (minimum 22 characters) returned with the callback for CSRF protection and request/callback correlation.
+        schema:
+          type: string
+          minLength: 22
+      - name: prompt
+        in: query
+        required: true
+        description: Must be `select_account`.
+        schema:
+          type: string
+          enum:
+          - select_account
+      - name: acr_values
+        in: query
+        required: false
+        description: Requested authentication context. Combines a service level and an authenticator assurance level.
+        schema:
+          type: string
+          example: urn:acr.login.gov:auth-only http://idmanagement.gov/ns/assurance/aal/2
+      - name: locale
+        in: query
+        required: false
+        description: Override the user's locale.
+        schema:
+          type: string
+          enum:
+          - ES
+          - FR
+      - name: code_challenge
+        in: query
+        required: false
+        description: PKCE code challenge (base64url SHA-256 of `code_verifier`). Required for native apps using PKCE instead of private_key_jwt.
+        schema:
+          type: string
+      - name: code_challenge_method
+        in: query
+        required: false
+        description: PKCE method. Login.gov supports `S256`.
+        schema:
+          type: string
+          enum:
+          - S256
+      responses:
+        '302':
+          description: Redirect to Login.gov for authentication, then back to `redirect_uri` with `code` and `state`.
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: opaque
