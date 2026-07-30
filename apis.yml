@@ -7,9 +7,22 @@ description: >-
   profile) or SAML 2.0, with support for IAL1 (auth-only) and IAL2 (identity-verified) assurance and AAL2 multi-factor
   authentication including phishing-resistant and PIV/CAC authenticators.
 type: Index
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 position: Consumer
 access: 3rd-Party
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/login-gov.png
 tags:
   - Government
   - Federal
@@ -26,72 +39,272 @@ modified: '2026-05-25'
 url: https://raw.githubusercontent.com/api-evangelist/login-gov/refs/heads/main/apis.yml
 specificationVersion: '0.19'
 apis:
-  - aid: login-gov:login-gov-oidc-api
-    name: Login.gov OpenID Connect API
-    description: |
-      The Login.gov OIDC integration surface used by relying parties. Conforms to the
-      iGov OpenID Connect Profile. Supports authorization code flow with
-      private_key_jwt (web apps) or PKCE (native apps); implicit flow is not supported.
-      Exposes discovery, JWKS, authorize, token, userinfo, and RP-initiated logout
-      endpoints in both sandbox (idp.int.identitysandbox.gov) and production
-      (secure.login.gov).
-    humanURL: https://developers.login.gov/oidc/
-    baseURL: https://secure.login.gov
-    tags:
-      - OIDC
-      - OpenID Connect
-      - Authentication
-      - SSO
-      - Federal
-    properties:
-      - type: Documentation
-        url: https://developers.login.gov/oidc/
-      - type: Documentation
-        url: https://developers.login.gov/oidc/getting-started/
-      - type: Documentation
-        url: https://developers.login.gov/oidc/authorization/
-      - type: Documentation
-        url: https://developers.login.gov/oidc/token/
-      - type: Documentation
-        url: https://developers.login.gov/oidc/user-info/
-      - type: Documentation
-        url: https://developers.login.gov/oidc/logout/
-      - type: Documentation
-        url: https://developers.login.gov/oidc/certificates/
-      - type: Signup
-        url: https://portal.int.identitysandbox.gov
-      - type: OpenAPI
-        url: openapi/login-gov-oidc-openapi.yml
-      - type: JSONSchema
-        url: json-schema/login-gov-userinfo-schema.json
-      - type: JSONSchema
-        url: json-schema/login-gov-id-token-schema.json
-      - type: JSONLD
-        url: json-ld/login-gov-context.jsonld
-      - type: SpectralRuleset
-        url: rules/login-gov-rules.yml
-  - aid: login-gov:login-gov-saml-api
-    name: Login.gov SAML 2.0 API
-    description: |
-      SAML 2.0 federation surface for relying parties that prefer SAML over OIDC. Uses
-      HTTP-Redirect SSO and HTTP-POST SLO with the persistent NameID format (UUID v4).
-      Endpoints are year-versioned (2026 = certificates valid through April 1, 2027).
-      Metadata is published; clients should consume it dynamically to handle annual
-      certificate rotations.
-    humanURL: https://developers.login.gov/saml/
-    baseURL: https://secure.login.gov
-    tags:
-      - SAML
-      - Authentication
-      - SSO
-      - Federal
-    properties:
-      - type: Documentation
-        url: https://developers.login.gov/saml/
-      - type: Documentation
-        url: https://developers.login.gov/saml/getting-started/
-      - type: OpenAPI
-        url: openapi/login-gov-saml-openapi.yml
+- aid: login-gov:login-gov-authentication-api
+  name: Login.gov Authentication API
+  description: SAML SSO request endpoint.
+  humanURL: https://developers.login.gov/oidc/
+  baseURL: https://secure.login.gov
+  tags:
+  - Authentication
+  properties:
+  - type: OpenAPI
+    url: openapi/login-gov-authentication-api-openapi.yml
+  - type: Documentation
+    url: https://developers.login.gov/oidc/
+  - type: Documentation
+    url: https://developers.login.gov/oidc/getting-started/
+  - type: Documentation
+    url: https://developers.login.gov/oidc/authorization/
+  - type: Documentation
+    url: https://developers.login.gov/oidc/token/
+  - type: Documentation
+    url: https://developers.login.gov/oidc/user-info/
+  - type: Documentation
+    url: https://developers.login.gov/oidc/logout/
+  - type: Documentation
+    url: https://developers.login.gov/oidc/certificates/
+  - type: Signup
+    url: https://portal.int.identitysandbox.gov
+  - type: JSONSchema
+    url: json-schema/login-gov-userinfo-schema.json
+  - type: JSONSchema
+    url: json-schema/login-gov-id-token-schema.json
+  - type: JSONLD
+    url: json-ld/login-gov-context.jsonld
+  - type: SpectralRuleset
+    url: rules/login-gov-rules.yml
+  - type: Documentation
+    url: https://developers.login.gov/saml/
+  - type: Documentation
+    url: https://developers.login.gov/saml/getting-started/
+- aid: login-gov:login-gov-authorization-api
+  name: Login.gov Authorization API
+  description: OAuth 2.0 authorization endpoint where the user authenticates.
+  humanURL: https://developers.login.gov/oidc/
+  baseURL: https://secure.login.gov
+  tags:
+  - Authorization
+  properties:
+  - type: OpenAPI
+    url: openapi/login-gov-authorization-api-openapi.yml
+  - type: Documentation
+    url: https://developers.login.gov/oidc/
+  - type: Documentation
+    url: https://developers.login.gov/oidc/getting-started/
+  - type: Documentation
+    url: https://developers.login.gov/oidc/authorization/
+  - type: Documentation
+    url: https://developers.login.gov/oidc/token/
+  - type: Documentation
+    url: https://developers.login.gov/oidc/user-info/
+  - type: Documentation
+    url: https://developers.login.gov/oidc/logout/
+  - type: Documentation
+    url: https://developers.login.gov/oidc/certificates/
+  - type: Signup
+    url: https://portal.int.identitysandbox.gov
+  - type: JSONSchema
+    url: json-schema/login-gov-userinfo-schema.json
+  - type: JSONSchema
+    url: json-schema/login-gov-id-token-schema.json
+  - type: JSONLD
+    url: json-ld/login-gov-context.jsonld
+  - type: SpectralRuleset
+    url: rules/login-gov-rules.yml
+  - type: Documentation
+    url: https://developers.login.gov/saml/
+  - type: Documentation
+    url: https://developers.login.gov/saml/getting-started/
+- aid: login-gov:login-gov-discovery-api
+  name: Login.gov Discovery API
+  description: OIDC discovery and public key endpoints.
+  humanURL: https://developers.login.gov/oidc/
+  baseURL: https://secure.login.gov
+  tags:
+  - Discovery
+  properties:
+  - type: OpenAPI
+    url: openapi/login-gov-discovery-api-openapi.yml
+  - type: Documentation
+    url: https://developers.login.gov/oidc/
+  - type: Documentation
+    url: https://developers.login.gov/oidc/getting-started/
+  - type: Documentation
+    url: https://developers.login.gov/oidc/authorization/
+  - type: Documentation
+    url: https://developers.login.gov/oidc/token/
+  - type: Documentation
+    url: https://developers.login.gov/oidc/user-info/
+  - type: Documentation
+    url: https://developers.login.gov/oidc/logout/
+  - type: Documentation
+    url: https://developers.login.gov/oidc/certificates/
+  - type: Signup
+    url: https://portal.int.identitysandbox.gov
+  - type: JSONSchema
+    url: json-schema/login-gov-userinfo-schema.json
+  - type: JSONSchema
+    url: json-schema/login-gov-id-token-schema.json
+  - type: JSONLD
+    url: json-ld/login-gov-context.jsonld
+  - type: SpectralRuleset
+    url: rules/login-gov-rules.yml
+  - type: Documentation
+    url: https://developers.login.gov/saml/
+  - type: Documentation
+    url: https://developers.login.gov/saml/getting-started/
+- aid: login-gov:login-gov-logout-api
+  name: Login.gov Logout API
+  description: RP-initiated logout and session termination.
+  humanURL: https://developers.login.gov/oidc/
+  baseURL: https://secure.login.gov
+  tags:
+  - Logout
+  properties:
+  - type: OpenAPI
+    url: openapi/login-gov-logout-api-openapi.yml
+  - type: Documentation
+    url: https://developers.login.gov/oidc/
+  - type: Documentation
+    url: https://developers.login.gov/oidc/getting-started/
+  - type: Documentation
+    url: https://developers.login.gov/oidc/authorization/
+  - type: Documentation
+    url: https://developers.login.gov/oidc/token/
+  - type: Documentation
+    url: https://developers.login.gov/oidc/user-info/
+  - type: Documentation
+    url: https://developers.login.gov/oidc/logout/
+  - type: Documentation
+    url: https://developers.login.gov/oidc/certificates/
+  - type: Signup
+    url: https://portal.int.identitysandbox.gov
+  - type: JSONSchema
+    url: json-schema/login-gov-userinfo-schema.json
+  - type: JSONSchema
+    url: json-schema/login-gov-id-token-schema.json
+  - type: JSONLD
+    url: json-ld/login-gov-context.jsonld
+  - type: SpectralRuleset
+    url: rules/login-gov-rules.yml
+  - type: Documentation
+    url: https://developers.login.gov/saml/
+  - type: Documentation
+    url: https://developers.login.gov/saml/getting-started/
+- aid: login-gov:login-gov-metadata-api
+  name: Login.gov Metadata API
+  description: SAML 2.0 IdP metadata.
+  humanURL: https://developers.login.gov/oidc/
+  baseURL: https://secure.login.gov
+  tags:
+  - Metadata
+  properties:
+  - type: OpenAPI
+    url: openapi/login-gov-metadata-api-openapi.yml
+  - type: Documentation
+    url: https://developers.login.gov/oidc/
+  - type: Documentation
+    url: https://developers.login.gov/oidc/getting-started/
+  - type: Documentation
+    url: https://developers.login.gov/oidc/authorization/
+  - type: Documentation
+    url: https://developers.login.gov/oidc/token/
+  - type: Documentation
+    url: https://developers.login.gov/oidc/user-info/
+  - type: Documentation
+    url: https://developers.login.gov/oidc/logout/
+  - type: Documentation
+    url: https://developers.login.gov/oidc/certificates/
+  - type: Signup
+    url: https://portal.int.identitysandbox.gov
+  - type: JSONSchema
+    url: json-schema/login-gov-userinfo-schema.json
+  - type: JSONSchema
+    url: json-schema/login-gov-id-token-schema.json
+  - type: JSONLD
+    url: json-ld/login-gov-context.jsonld
+  - type: SpectralRuleset
+    url: rules/login-gov-rules.yml
+  - type: Documentation
+    url: https://developers.login.gov/saml/
+  - type: Documentation
+    url: https://developers.login.gov/saml/getting-started/
+- aid: login-gov:login-gov-token-api
+  name: Login.gov Token API
+  description: Token exchange using private_key_jwt or PKCE.
+  humanURL: https://developers.login.gov/oidc/
+  baseURL: https://secure.login.gov
+  tags:
+  - Token
+  properties:
+  - type: OpenAPI
+    url: openapi/login-gov-token-api-openapi.yml
+  - type: Documentation
+    url: https://developers.login.gov/oidc/
+  - type: Documentation
+    url: https://developers.login.gov/oidc/getting-started/
+  - type: Documentation
+    url: https://developers.login.gov/oidc/authorization/
+  - type: Documentation
+    url: https://developers.login.gov/oidc/token/
+  - type: Documentation
+    url: https://developers.login.gov/oidc/user-info/
+  - type: Documentation
+    url: https://developers.login.gov/oidc/logout/
+  - type: Documentation
+    url: https://developers.login.gov/oidc/certificates/
+  - type: Signup
+    url: https://portal.int.identitysandbox.gov
+  - type: JSONSchema
+    url: json-schema/login-gov-userinfo-schema.json
+  - type: JSONSchema
+    url: json-schema/login-gov-id-token-schema.json
+  - type: JSONLD
+    url: json-ld/login-gov-context.jsonld
+  - type: SpectralRuleset
+    url: rules/login-gov-rules.yml
+  - type: Documentation
+    url: https://developers.login.gov/saml/
+  - type: Documentation
+    url: https://developers.login.gov/saml/getting-started/
+- aid: login-gov:login-gov-userinfo-api
+  name: Login.gov UserInfo API
+  description: User attribute retrieval with a bearer access token.
+  humanURL: https://developers.login.gov/oidc/
+  baseURL: https://secure.login.gov
+  tags:
+  - UserInfo
+  properties:
+  - type: OpenAPI
+    url: openapi/login-gov-userinfo-api-openapi.yml
+  - type: Documentation
+    url: https://developers.login.gov/oidc/
+  - type: Documentation
+    url: https://developers.login.gov/oidc/getting-started/
+  - type: Documentation
+    url: https://developers.login.gov/oidc/authorization/
+  - type: Documentation
+    url: https://developers.login.gov/oidc/token/
+  - type: Documentation
+    url: https://developers.login.gov/oidc/user-info/
+  - type: Documentation
+    url: https://developers.login.gov/oidc/logout/
+  - type: Documentation
+    url: https://developers.login.gov/oidc/certificates/
+  - type: Signup
+    url: https://portal.int.identitysandbox.gov
+  - type: JSONSchema
+    url: json-schema/login-gov-userinfo-schema.json
+  - type: JSONSchema
+    url: json-schema/login-gov-id-token-schema.json
+  - type: JSONLD
+    url: json-ld/login-gov-context.jsonld
+  - type: SpectralRuleset
+    url: rules/login-gov-rules.yml
+  - type: Documentation
+    url: https://developers.login.gov/saml/
+  - type: Documentation
+    url: https://developers.login.gov/saml/getting-started/
 common:
   - type: AgenticAccess
     url: agentic-access/login-gov-agentic-access.yml
