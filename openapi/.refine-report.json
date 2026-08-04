@@ -1,0 +1,26 @@
+{
+  "provider": "login-gov",
+  "sources": [
+    "login-gov-authentication-api-openapi.yml",
+    "login-gov-authorization-api-openapi.yml",
+    "login-gov-discovery-api-openapi.yml",
+    "login-gov-logout-api-openapi.yml",
+    "login-gov-metadata-api-openapi.yml",
+    "login-gov-token-api-openapi.yml",
+    "login-gov-userinfo-api-openapi.yml"
+  ],
+  "outputs": [
+    "login-gov-authentication-api-openapi.yml",
+    "login-gov-authorization-api-openapi.yml",
+    "login-gov-discovery-api-openapi.yml",
+    "login-gov-logout-api-openapi.yml",
+    "login-gov-metadata-api-openapi.yml",
+    "login-gov-token-api-openapi.yml",
+    "login-gov-userinfo-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
