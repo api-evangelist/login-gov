@@ -306,6 +306,16 @@ apis:
   - type: Documentation
     url: https://developers.login.gov/saml/getting-started/
 common:
+  - type: IssueTracker
+    url: https://github.com/18F/identity-idp/issues
+  - type: Releases
+    url: https://github.com/18F/identity-idp/releases
+  - type: SecurityPolicy
+    url: https://github.com/18F/identity-idp/blob/main/docs/SECURITY.md
+  - type: CodeOfConduct
+    url: https://github.com/18F/.github/blob/master/CODE_OF_CONDUCT.md
+  - type: ContributionGuide
+    url: https://github.com/18F/identity-idp/blob/main/CONTRIBUTING.md
   - type: AgenticAccess
     url: agentic-access/login-gov-agentic-access.yml
   - type: VulnerabilityDisclosure
