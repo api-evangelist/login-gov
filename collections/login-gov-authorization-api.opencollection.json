@@ -1,0 +1,97 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Login.gov OpenID Connect Authentication Authorization API",
+    "version": "2026-01"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Authorization",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Start Authorization Flow",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://idp.int.identitysandbox.gov/openid_connect/authorize",
+            "params": [
+              {
+                "name": "client_id",
+                "value": "",
+                "type": "query",
+                "description": "Registered relying party identifier."
+              },
+              {
+                "name": "response_type",
+                "value": "",
+                "type": "query",
+                "description": "Must be `code`. Implicit flow is not supported."
+              },
+              {
+                "name": "scope",
+                "value": "",
+                "type": "query",
+                "description": "Space-separated list of requested scopes. Must include `openid`."
+              },
+              {
+                "name": "redirect_uri",
+                "value": "",
+                "type": "query",
+                "description": "Pre-registered redirect URI. Must match exactly."
+              },
+              {
+                "name": "nonce",
+                "value": "",
+                "type": "query",
+                "description": "Random string (minimum 22 characters) bound to the id_token to prevent replay."
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "Opaque value (minimum 22 characters) returned with the callback for CSRF protection and request/callback correlation."
+              },
+              {
+                "name": "prompt",
+                "value": "",
+                "type": "query",
+                "description": "Must be `select_account`."
+              },
+              {
+                "name": "acr_values",
+                "value": "",
+                "type": "query",
+                "description": "Requested authentication context. Combines a service level and an authenticator assurance level."
+              },
+              {
+                "name": "locale",
+                "value": "",
+                "type": "query",
+                "description": "Override the user's locale."
+              },
+              {
+                "name": "code_challenge",
+                "value": "",
+                "type": "query",
+                "description": "PKCE code challenge (base64url SHA-256 of `code_verifier`). Required for native apps using PKCE instead of private_key_jwt."
+              },
+              {
+                "name": "code_challenge_method",
+                "value": "",
+                "type": "query",
+                "description": "PKCE method. Login.gov supports `S256`."
+              }
+            ]
+          },
+          "docs": "Begins the OIDC authorization code flow. The user is redirected to Login.gov, authenticates,\nconsents to the requested scopes, and is redirected back to `redirect_uri` with an\nauthorization `code` and the original `state` value.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

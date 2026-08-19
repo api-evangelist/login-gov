@@ -1,0 +1,204 @@
+{
+  "item": [
+    {
+      "id": "3a81aa08-8568-4027-a2d0-4b8698fdc4aa",
+      "name": "Authorization",
+      "description": {
+        "content": "OAuth 2.0 authorization endpoint where the user authenticates.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ec7b306d-a228-44d3-bb81-37372126db5b",
+          "name": "Start Authorization Flow",
+          "request": {
+            "name": "Start Authorization Flow",
+            "description": {
+              "content": "Begins the OIDC authorization code flow. The user is redirected to Login.gov, authenticates,\nconsents to the requested scopes, and is redirected back to `redirect_uri` with an\nauthorization `code` and the original `state` value.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "openid_connect",
+                "authorize"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "client_id",
+                  "value": "<string>",
+                  "description": "(Required) Registered relying party identifier."
+                },
+                {
+                  "disabled": false,
+                  "key": "response_type",
+                  "value": "<string>",
+                  "description": "(Required) Must be `code`. Implicit flow is not supported."
+                },
+                {
+                  "disabled": false,
+                  "key": "scope",
+                  "value": "<string>",
+                  "description": "(Required) Space-separated list of requested scopes. Must include `openid`."
+                },
+                {
+                  "disabled": false,
+                  "key": "redirect_uri",
+                  "value": "<uri>",
+                  "description": "(Required) Pre-registered redirect URI. Must match exactly."
+                },
+                {
+                  "disabled": false,
+                  "key": "nonce",
+                  "value": "<string>",
+                  "description": "(Required) Random string (minimum 22 characters) bound to the id_token to prevent replay."
+                },
+                {
+                  "disabled": false,
+                  "key": "state",
+                  "value": "<string>",
+                  "description": "(Required) Opaque value (minimum 22 characters) returned with the callback for CSRF protection and request/callback correlation."
+                },
+                {
+                  "disabled": false,
+                  "key": "prompt",
+                  "value": "<string>",
+                  "description": "(Required) Must be `select_account`."
+                },
+                {
+                  "disabled": false,
+                  "key": "acr_values",
+                  "value": "<string>",
+                  "description": "Requested authentication context. Combines a service level and an authenticator assurance level."
+                },
+                {
+                  "disabled": false,
+                  "key": "locale",
+                  "value": "<string>",
+                  "description": "Override the user's locale."
+                },
+                {
+                  "disabled": false,
+                  "key": "code_challenge",
+                  "value": "<string>",
+                  "description": "PKCE code challenge (base64url SHA-256 of `code_verifier`). Required for native apps using PKCE instead of private_key_jwt."
+                },
+                {
+                  "disabled": false,
+                  "key": "code_challenge_method",
+                  "value": "<string>",
+                  "description": "PKCE method. Login.gov supports `S256`."
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b4fb5eea-6e25-40fb-9c9f-eed8f5720540",
+              "name": "Redirect to Login.gov for authentication, then back to `redirect_uri` with `code` and `state`.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "openid_connect",
+                    "authorize"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "client_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "response_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "scope",
+                      "value": "openid email profile"
+                    },
+                    {
+                      "key": "redirect_uri",
+                      "value": "<uri>"
+                    },
+                    {
+                      "key": "nonce",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "prompt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "acr_values",
+                      "value": "urn:acr.login.gov:auth-only http://idmanagement.gov/ns/assurance/aal/2"
+                    },
+                    {
+                      "key": "locale",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "code_challenge",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "code_challenge_method",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Found",
+              "code": 302,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://idp.int.identitysandbox.gov",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "c987f567-b02f-4b8c-951a-7917ce0d218f",
+    "name": "Login.gov OpenID Connect Authentication Authorization API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Login.gov is the U.S. federal government's secure single sign-on service for public-facing\ngovernment applications, operated by the General Services Administration's Technology\nTransformation Services. This OpenAPI describes the OpenID Connect (OIDC) integration\nsurface used by relying parties (service providers) to authenticate users at IAL1 (auth\nonly) and IAL2 (identity-verified) assurance levels.\n\nLogin.gov conforms to the iGov OpenID Connect Profile. Implicit flow is not supported.\nClient authentication uses private_key_jwt (preferred for web apps) or PKCE\n(preferred for native mobile apps).\n\n\nContact Support:\n Name: Login.gov Partner Support\n Email: partners@login.gov",
+      "type": "text/plain"
+    }
+  }
+}

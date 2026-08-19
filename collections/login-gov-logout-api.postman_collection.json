@@ -1,0 +1,226 @@
+{
+  "item": [
+    {
+      "id": "fa1bbcf5-9601-4a09-9e5c-814b623f8b75",
+      "name": "Logout",
+      "description": {
+        "content": "RP-initiated logout and session termination.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "04c2d3f7-9f22-49c6-bd94-ea75c8802578",
+          "name": "RP-Initiated Logout",
+          "request": {
+            "name": "RP-Initiated Logout",
+            "description": {
+              "content": "Ends the user's Login.gov session. After confirmation the browser is redirected to the\npre-registered `post_logout_redirect_uri` with the original `state` value.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "openid_connect",
+                "logout"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "client_id",
+                  "value": "<string>",
+                  "description": "(Required) Registered relying party identifier."
+                },
+                {
+                  "disabled": false,
+                  "key": "post_logout_redirect_uri",
+                  "value": "<uri>",
+                  "description": "(Required) Pre-registered post-logout redirect URI."
+                },
+                {
+                  "disabled": false,
+                  "key": "state",
+                  "value": "<string>",
+                  "description": "Opaque value (minimum 22 characters) echoed back to `post_logout_redirect_uri`."
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cc0b508d-3c56-4097-9d18-b10575c55271",
+              "name": "Redirect back to `post_logout_redirect_uri` after the user confirms logout.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "openid_connect",
+                    "logout"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "client_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "post_logout_redirect_uri",
+                      "value": "<uri>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Found",
+              "code": 302,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f809b92b-a40f-4029-bdc6-f54bf24a714d",
+          "name": "SAML Single Logout (HTTP-POST)",
+          "request": {
+            "name": "SAML Single Logout (HTTP-POST)",
+            "description": {
+              "content": "Accepts a signed `LogoutRequest` from the SP and terminates the user's Login.gov session.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "saml",
+                "logout2026"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "SAMLRequest",
+                  "value": "<string>",
+                  "description": "(Required) Base64-encoded SAML LogoutRequest."
+                },
+                {
+                  "disabled": false,
+                  "key": "RelayState",
+                  "value": "<string>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2dbb06f6-3999-4f6d-97ef-7d4d341f1e98",
+              "name": "LogoutResponse posted back to the SP's SLO endpoint.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "saml",
+                    "logout2026"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Base64-encoded SAML LogoutRequest.",
+                        "type": "text/plain"
+                      },
+                      "key": "SAMLRequest",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "RelayState",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://idp.int.identitysandbox.gov",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "8f19d93d-9c60-49f8-80d0-5402fa9cd54c",
+    "name": "Login.gov OpenID Connect Authentication Logout API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Login.gov is the U.S. federal government's secure single sign-on service for public-facing\ngovernment applications, operated by the General Services Administration's Technology\nTransformation Services. This OpenAPI describes the OpenID Connect (OIDC) integration\nsurface used by relying parties (service providers) to authenticate users at IAL1 (auth\nonly) and IAL2 (identity-verified) assurance levels.\n\nLogin.gov conforms to the iGov OpenID Connect Profile. Implicit flow is not supported.\nClient authentication uses private_key_jwt (preferred for web apps) or PKCE\n(preferred for native mobile apps).\n\n\nContact Support:\n Name: Login.gov Partner Support\n Email: partners@login.gov",
+      "type": "text/plain"
+    }
+  }
+}

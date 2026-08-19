@@ -1,0 +1,184 @@
+{
+  "item": [
+    {
+      "id": "c5ae5cc4-06c5-40b1-a8f5-a36f0416c16e",
+      "name": "Authentication",
+      "description": {
+        "content": "SAML SSO request endpoint.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4051a8ec-c88b-40e1-bee4-8c2cfd7da7c6",
+          "name": "Initiate SAML SSO (HTTP-Redirect)",
+          "request": {
+            "name": "Initiate SAML SSO (HTTP-Redirect)",
+            "description": {
+              "content": "Accepts a Base64-encoded, DEFLATE-compressed `SAMLRequest` via HTTP-Redirect.\nThe user authenticates with Login.gov and the IdP responds with a signed SAML\nassertion POSTed to the SP's Assertion Consumer Service URL.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "saml",
+                "auth2026"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "SAMLRequest",
+                  "value": "<string>",
+                  "description": "(Required) Base64-encoded DEFLATE-compressed AuthnRequest."
+                },
+                {
+                  "disabled": false,
+                  "key": "RelayState",
+                  "value": "<string>",
+                  "description": "Opaque value echoed back in the SAML response."
+                },
+                {
+                  "disabled": false,
+                  "key": "SigAlg",
+                  "value": "<string>",
+                  "description": "Signature algorithm URI when the request is signed."
+                },
+                {
+                  "disabled": false,
+                  "key": "Signature",
+                  "value": "<string>",
+                  "description": "Base64-encoded signature over the request."
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8935d3d2-c839-4051-b797-c26936e2725e",
+              "name": "Login.gov sign-in UI is rendered to the end user.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "saml",
+                    "auth2026"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "SAMLRequest",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "RelayState",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "SigAlg",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "Signature",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "17976a8c-3bb0-42e4-b3d0-6bddde9e7b1c",
+              "name": "Redirect to authentication challenge or to SP ACS with the signed SAML response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "saml",
+                    "auth2026"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "SAMLRequest",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "RelayState",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "SigAlg",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "Signature",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Found",
+              "code": 302,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://idp.int.identitysandbox.gov",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "1aff0ebc-a68b-41a0-a724-455662c6e0be",
+    "name": "Login.gov OpenID Connect Authentication API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Login.gov is the U.S. federal government's secure single sign-on service for public-facing\ngovernment applications, operated by the General Services Administration's Technology\nTransformation Services. This OpenAPI describes the OpenID Connect (OIDC) integration\nsurface used by relying parties (service providers) to authenticate users at IAL1 (auth\nonly) and IAL2 (identity-verified) assurance levels.\n\nLogin.gov conforms to the iGov OpenID Connect Profile. Implicit flow is not supported.\nClient authentication uses private_key_jwt (preferred for web apps) or PKCE\n(preferred for native mobile apps).\n\n\nContact Support:\n Name: Login.gov Partner Support\n Email: partners@login.gov",
+      "type": "text/plain"
+    }
+  }
+}

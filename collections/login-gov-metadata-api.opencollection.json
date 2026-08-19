@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Login.gov OpenID Connect Authentication Metadata API",
+    "version": "2026-01"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Metadata",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get SAML 2.0 IdP Metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://idp.int.identitysandbox.gov/api/saml/metadata2026"
+          },
+          "docs": "Returns the SAML 2.0 IdP metadata XML including entity ID, SSO/SLO endpoints, signing certificate, and supported NameID formats."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

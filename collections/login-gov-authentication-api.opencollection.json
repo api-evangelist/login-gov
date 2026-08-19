@@ -1,0 +1,55 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Login.gov OpenID Connect Authentication API",
+    "version": "2026-01"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Authentication",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Initiate SAML SSO (HTTP-Redirect)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://idp.int.identitysandbox.gov/api/saml/auth2026",
+            "params": [
+              {
+                "name": "SAMLRequest",
+                "value": "",
+                "type": "query",
+                "description": "Base64-encoded DEFLATE-compressed AuthnRequest."
+              },
+              {
+                "name": "RelayState",
+                "value": "",
+                "type": "query",
+                "description": "Opaque value echoed back in the SAML response."
+              },
+              {
+                "name": "SigAlg",
+                "value": "",
+                "type": "query",
+                "description": "Signature algorithm URI when the request is signed."
+              },
+              {
+                "name": "Signature",
+                "value": "",
+                "type": "query",
+                "description": "Base64-encoded signature over the request."
+              }
+            ]
+          },
+          "docs": "Accepts a Base64-encoded, DEFLATE-compressed `SAMLRequest` via HTTP-Redirect.\nThe user authenticates with Login.gov and the IdP responds with a signed SAML\nassertion POSTed to the SP's Assertion Consumer Service URL.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,178 @@
+{
+  "item": [
+    {
+      "id": "42a2fba4-0296-4427-a472-926afc54b6ed",
+      "name": "Discovery",
+      "description": {
+        "content": "OIDC discovery and public key endpoints.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "24b92359-4ba0-4c0c-b222-296ce821364f",
+          "name": "Get OIDC Discovery Document",
+          "request": {
+            "name": "Get OIDC Discovery Document",
+            "description": {
+              "content": "Returns the OpenID Connect discovery document listing supported endpoints, scopes, response types, claims, and acr_values.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ".well-known",
+                "openid-configuration"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "22af4f28-c081-4198-a82d-677bfdf47f80",
+              "name": "Discovery metadata.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ".well-known",
+                    "openid-configuration"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"issuer\": \"https://idp.int.identitysandbox.gov\",\n  \"authorization_endpoint\": \"http://HUzZqLoxDPIWxQE.qvvohj3u1bYT3b+2tkrJ,KNdRb4tPB5L5qo9uEzM8OBDoiECPJhkhrO3YQsu\",\n  \"token_endpoint\": \"http://L.jeYmMpP\",\n  \"userinfo_endpoint\": \"https://QlLLil.huS2kYfCw5zPreBbC0CuAZHcuWJ28+Upk4ICduVQJJTVTBBlW-uwX+l\",\n  \"end_session_endpoint\": \"https://OdKVjKzRAWDCFSKFwrGpbbAoWhjAsxcQ.lcyJ8Al4nVSwazMBK-SPxlrkHTdD,XZDQ+WKKu\",\n  \"jwks_uri\": \"https://r.kuV79CTMmTiZypgEfPNH-N-xuI\",\n  \"scopes_supported\": [\n    \"string\",\n    \"string\"\n  ],\n  \"response_types_supported\": [\n    \"string\",\n    \"string\"\n  ],\n  \"acr_values_supported\": [\n    \"string\",\n    \"string\"\n  ],\n  \"token_endpoint_auth_methods_supported\": [\n    \"string\",\n    \"string\"\n  ],\n  \"id_token_signing_alg_values_supported\": [\n    \"string\",\n    \"string\"\n  ],\n  \"subject_types_supported\": [\n    \"string\",\n    \"string\"\n  ],\n  \"claims_supported\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9bb1daff-ced8-49c7-a702-20a5401e351d",
+          "name": "Get JWKS Signing Keys",
+          "request": {
+            "name": "Get JWKS Signing Keys",
+            "description": {
+              "content": "Returns Login.gov's public signing key(s) in JWK Set format. Keys are rotated at least annually; clients should fetch dynamically rather than hard-coding.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "openid_connect",
+                "certs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "acb1453d-35e7-42c7-9dad-79e4f9c73868",
+              "name": "JSON Web Key Set.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "openid_connect",
+                    "certs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"keys\": [\n    {\n      \"kty\": \"RSA\",\n      \"kid\": \"string\",\n      \"use\": \"sig\",\n      \"alg\": \"RS256\",\n      \"n\": \"string\",\n      \"e\": \"string\"\n    },\n    {\n      \"kty\": \"RSA\",\n      \"kid\": \"string\",\n      \"use\": \"sig\",\n      \"alg\": \"RS256\",\n      \"n\": \"string\",\n      \"e\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://idp.int.identitysandbox.gov",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "1f0524f3-b1cc-4a45-acf2-e1c53f964c97",
+    "name": "Login.gov OpenID Connect Authentication Discovery API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Login.gov is the U.S. federal government's secure single sign-on service for public-facing\ngovernment applications, operated by the General Services Administration's Technology\nTransformation Services. This OpenAPI describes the OpenID Connect (OIDC) integration\nsurface used by relying parties (service providers) to authenticate users at IAL1 (auth\nonly) and IAL2 (identity-verified) assurance levels.\n\nLogin.gov conforms to the iGov OpenID Connect Profile. Implicit flow is not supported.\nClient authentication uses private_key_jwt (preferred for web apps) or PKCE\n(preferred for native mobile apps).\n\n\nContact Support:\n Name: Login.gov Partner Support\n Email: partners@login.gov",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Login.gov OpenID Connect Authentication Token API",
+    "version": "2026-01"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Token",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Exchange Authorization Code for Tokens",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://idp.int.identitysandbox.gov/api/openid_connect/token",
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Exchanges the authorization code for an `access_token` and a signed `id_token`. Web apps\nauthenticate using `private_key_jwt`; native apps use PKCE with a `code_verifier`.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

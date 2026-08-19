@@ -1,0 +1,40 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Login.gov OpenID Connect Authentication Discovery API",
+    "version": "2026-01"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Discovery",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get OIDC Discovery Document",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://idp.int.identitysandbox.gov/.well-known/openid-configuration"
+          },
+          "docs": "Returns the OpenID Connect discovery document listing supported endpoints, scopes, response types, claims, and acr_values."
+        },
+        {
+          "info": {
+            "name": "Get JWKS Signing Keys",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://idp.int.identitysandbox.gov/api/openid_connect/certs"
+          },
+          "docs": "Returns Login.gov's public signing key(s) in JWK Set format. Keys are rotated at least annually; clients should fetch dynamically rather than hard-coding."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

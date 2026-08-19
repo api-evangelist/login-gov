@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Login.gov OpenID Connect Authentication UserInfo API",
+    "version": "2026-01"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "UserInfo",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Authenticated User Attributes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://idp.int.identitysandbox.gov/api/openid_connect/userinfo",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns user attributes consented to during authorization. Requires a bearer `access_token`."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
