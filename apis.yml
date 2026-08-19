@@ -37,7 +37,7 @@ tags:
 created: '2026-05-25'
 modified: '2026-05-25'
 url: https://raw.githubusercontent.com/api-evangelist/login-gov/refs/heads/main/apis.yml
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
 - aid: login-gov:login-gov-authentication-api
   name: Login.gov Authentication API
