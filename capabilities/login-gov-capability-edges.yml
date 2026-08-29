@@ -1,0 +1,26 @@
+slug: login-gov
+provider: Login.gov
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Public Sector & Government
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 1
+edges:
+- tag: Authentication
+  spec_file: login-gov-authentication-api-openapi.yml
+  capability_id: BC-3220.20
+  capability_id_l1: BC-3220
+  capability_name: Citizen Identity & Authentication
+  confidence: 0.72
+  evidence: Initiate SAML SSO (HTTP-Redirect)  ... used by relying parties (service providers) to authenticate
+    users at IAL1 (auth only) and IAL2 (identity-verified) assurance levels
+  reason: Login.gov's operation performs federated authentication of members of the public accessing government
+    services at defined assurance levels, which is Citizen Identity & Authentication. Some risk this is
+    judged pure IAM plumbing.

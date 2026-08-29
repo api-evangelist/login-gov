@@ -319,6 +319,9 @@ apis:
   - type: Documentation
     url: https://developers.login.gov/saml/getting-started/
 common:
+  - type: CapabilityMap
+    url: capabilities/login-gov-capability-edges.yml
+    name: Login.gov Business Capability Map
   - type: IssueTracker
     url: https://github.com/18F/identity-idp/issues
   - type: Releases
