@@ -282,16 +282,16 @@ apis:
     url: https://developers.login.gov/saml/
   - type: Documentation
     url: https://developers.login.gov/saml/getting-started/
-- aid: login-gov:login-gov-userinfo-api
-  name: Login.gov UserInfo API
+- aid: login-gov:login-gov-user-info-api
+  name: Login.gov User Info API
   description: User attribute retrieval with a bearer access token.
   humanURL: https://developers.login.gov/oidc/
   baseURL: https://secure.login.gov
   tags:
-  - UserInfo
+  - User Info
   properties:
   - type: OpenAPI
-    url: openapi/login-gov-userinfo-api-openapi.yml
+    url: openapi/login-gov-user-info-api-openapi.yml
   - type: Documentation
     url: https://developers.login.gov/oidc/
   - type: Documentation
