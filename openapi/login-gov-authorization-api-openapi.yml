@@ -1,25 +1,8 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Login.gov OpenID Connect Authentication Authorization API
+  title: Login.gov OpenID Connect Authorization API
   version: 2026-01
-  description: 'Login.gov is the U.S. federal government''s secure single sign-on service for public-facing
-
-    government applications, operated by the General Services Administration''s Technology
-
-    Transformation Services. This OpenAPI describes the OpenID Connect (OIDC) integration
-
-    surface used by relying parties (service providers) to authenticate users at IAL1 (auth
-
-    only) and IAL2 (identity-verified) assurance levels.
-
-
-    Login.gov conforms to the iGov OpenID Connect Profile. Implicit flow is not supported.
-
-    Client authentication uses private_key_jwt (preferred for web apps) or PKCE
-
-    (preferred for native mobile apps).
-
-    '
+  description: Login.gov is the U.S.
   contact:
     name: Login.gov Partner Support
     url: https://developers.login.gov
@@ -46,9 +29,7 @@ paths:
 
         consents to the requested scopes, and is redirected back to `redirect_uri` with an
 
-        authorization `code` and the original `state` value.
-
-        '
+        authorization `code` and the original `state` value.'
       parameters:
       - name: client_id
         in: query

@@ -1,26 +1,38 @@
 {
   "provider": "login-gov",
   "sources": [
-    "login-gov-authentication-api-openapi.yml",
-    "login-gov-authorization-api-openapi.yml",
-    "login-gov-discovery-api-openapi.yml",
-    "login-gov-logout-api-openapi.yml",
-    "login-gov-metadata-api-openapi.yml",
-    "login-gov-token-api-openapi.yml",
-    "login-gov-userinfo-api-openapi.yml"
+    "_original/login-gov-oidc-openapi.yml",
+    "_original/login-gov-saml-openapi.yml"
   ],
   "outputs": [
-    "login-gov-authentication-api-openapi.yml",
     "login-gov-authorization-api-openapi.yml",
     "login-gov-discovery-api-openapi.yml",
     "login-gov-logout-api-openapi.yml",
-    "login-gov-metadata-api-openapi.yml",
     "login-gov-token-api-openapi.yml",
-    "login-gov-userinfo-api-openapi.yml"
+    "login-gov-userinfo-api-openapi.yml",
+    "login-gov-authentication-api-openapi.yml",
+    "login-gov-metadata-api-openapi.yml"
   ],
-  "archived": [],
+  "archived": [
+    "deleted 1 superseded output(s) from the previous generation"
+  ],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (2 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "login-gov-oidc-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "login-gov-saml-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "tag 'Logout' spans 2 source specs (login-gov-oidc-openapi.yml, login-gov-saml-openapi.yml): per-path servers applied",
+    "superseded outputs removed: login-gov-user-info-api-openapi.yml",
+    "apis.yml register: written (+1 apis, 7 total)"
+  ],
+  "skipped": [
+    "login-gov-authentication-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "login-gov-authorization-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "login-gov-discovery-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "login-gov-logout-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "login-gov-metadata-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "login-gov-token-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "login-gov-user-info-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

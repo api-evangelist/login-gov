@@ -1,25 +1,10 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Login.gov OpenID Connect Authentication API
+  title: Login.gov SAML 2.0 Authentication API
   version: 2026-01
-  description: 'Login.gov is the U.S. federal government''s secure single sign-on service for public-facing
+  description: 'Login.gov also supports SAML 2.0 for relying parties that prefer enterprise federation
 
-    government applications, operated by the General Services Administration''s Technology
-
-    Transformation Services. This OpenAPI describes the OpenID Connect (OIDC) integration
-
-    surface used by relying parties (service providers) to authenticate users at IAL1 (auth
-
-    only) and IAL2 (identity-verified) assurance levels.
-
-
-    Login.gov conforms to the iGov OpenID Connect Profile. Implicit flow is not supported.
-
-    Client authentication uses private_key_jwt (preferred for web apps) or PKCE
-
-    (preferred for native mobile apps).
-
-    '
+    semantics over OIDC.'
   contact:
     name: Login.gov Partner Support
     url: https://developers.login.gov
@@ -46,9 +31,7 @@ paths:
 
         The user authenticates with Login.gov and the IdP responds with a signed SAML
 
-        assertion POSTed to the SP''s Assertion Consumer Service URL.
-
-        '
+        assertion POSTed to the SP''s Assertion Consumer Service URL.'
       parameters:
       - name: SAMLRequest
         in: query
@@ -79,9 +62,3 @@ paths:
           description: Login.gov sign-in UI is rendered to the end user.
         '302':
           description: Redirect to authentication challenge or to SP ACS with the signed SAML response.
-components:
-  securitySchemes:
-    bearerAuth:
-      type: http
-      scheme: bearer
-      bearerFormat: opaque

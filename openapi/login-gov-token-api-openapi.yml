@@ -1,25 +1,8 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Login.gov OpenID Connect Authentication Token API
+  title: Login.gov OpenID Connect Token API
   version: 2026-01
-  description: 'Login.gov is the U.S. federal government''s secure single sign-on service for public-facing
-
-    government applications, operated by the General Services Administration''s Technology
-
-    Transformation Services. This OpenAPI describes the OpenID Connect (OIDC) integration
-
-    surface used by relying parties (service providers) to authenticate users at IAL1 (auth
-
-    only) and IAL2 (identity-verified) assurance levels.
-
-
-    Login.gov conforms to the iGov OpenID Connect Profile. Implicit flow is not supported.
-
-    Client authentication uses private_key_jwt (preferred for web apps) or PKCE
-
-    (preferred for native mobile apps).
-
-    '
+  description: Login.gov is the U.S.
   contact:
     name: Login.gov Partner Support
     url: https://developers.login.gov
@@ -44,9 +27,7 @@ paths:
       operationId: exchangeToken
       description: 'Exchanges the authorization code for an `access_token` and a signed `id_token`. Web apps
 
-        authenticate using `private_key_jwt`; native apps use PKCE with a `code_verifier`.
-
-        '
+        authenticate using `private_key_jwt`; native apps use PKCE with a `code_verifier`.'
       requestBody:
         required: true
         content:
@@ -68,6 +49,28 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+        error_description:
+          type: string
+    TokenResponse:
+      type: object
+      properties:
+        access_token:
+          type: string
+          description: Opaque bearer token for the userinfo endpoint.
+        token_type:
+          type: string
+          example: Bearer
+        expires_in:
+          type: integer
+          description: Lifetime of the access token in seconds.
+        id_token:
+          type: string
+          description: Signed JWT (RS256) carrying authenticated user identity claims.
     TokenRequest:
       type: object
       required:
@@ -92,28 +95,6 @@ components:
         code_verifier:
           type: string
           description: PKCE code verifier matching the original `code_challenge`. Used by native apps in lieu of `client_assertion`.
-    TokenResponse:
-      type: object
-      properties:
-        access_token:
-          type: string
-          description: Opaque bearer token for the userinfo endpoint.
-        token_type:
-          type: string
-          example: Bearer
-        expires_in:
-          type: integer
-          description: Lifetime of the access token in seconds.
-        id_token:
-          type: string
-          description: Signed JWT (RS256) carrying authenticated user identity claims.
-    Error:
-      type: object
-      properties:
-        error:
-          type: string
-        error_description:
-          type: string
   securitySchemes:
     bearerAuth:
       type: http
