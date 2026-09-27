@@ -49,28 +49,6 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
-    Error:
-      type: object
-      properties:
-        error:
-          type: string
-        error_description:
-          type: string
-    TokenResponse:
-      type: object
-      properties:
-        access_token:
-          type: string
-          description: Opaque bearer token for the userinfo endpoint.
-        token_type:
-          type: string
-          example: Bearer
-        expires_in:
-          type: integer
-          description: Lifetime of the access token in seconds.
-        id_token:
-          type: string
-          description: Signed JWT (RS256) carrying authenticated user identity claims.
     TokenRequest:
       type: object
       required:
@@ -95,6 +73,28 @@ components:
         code_verifier:
           type: string
           description: PKCE code verifier matching the original `code_challenge`. Used by native apps in lieu of `client_assertion`.
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+        error_description:
+          type: string
+    TokenResponse:
+      type: object
+      properties:
+        access_token:
+          type: string
+          description: Opaque bearer token for the userinfo endpoint.
+        token_type:
+          type: string
+          example: Bearer
+        expires_in:
+          type: integer
+          description: Lifetime of the access token in seconds.
+        id_token:
+          type: string
+          description: Signed JWT (RS256) carrying authenticated user identity claims.
   securitySchemes:
     bearerAuth:
       type: http

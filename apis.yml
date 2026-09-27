@@ -8,17 +8,22 @@ description: Login.gov is the U.S. federal government's secure single sign-on an
   PIV/CAC authenticators.
 type: Index
 deliveryModel:
-  model: unknown
+  model: saas
+  license_evidence:
+    not_product:
+    - 18f/identity-idp
+    - 18f/identity-oidc-sinatra
+    - 18f/identity-saml-sinatra
   open_source: unknown
   commercial: true
   callable_host: true
-  label: Delivery model not determined — needs a product licence on record
+  label: Hosted service · you call their endpoint
   confidence: low
   source:
   - openapi
   - pricing
-  - repository-unlicensed
-  generated: '2026-08-28'
+  - repository-not-product
+  generated: '2026-09-25'
   method: derived
 accessModel:
   pricing: freemium
@@ -290,8 +295,6 @@ apis:
   humanURL: https://developers.login.gov/oidc/
   baseURL: https://secure.login.gov
   tags:
-  - UserInfo
-  tags_raw:
   - User Info
   properties:
   - type: OpenAPI
