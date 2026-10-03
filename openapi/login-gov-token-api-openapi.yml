@@ -73,13 +73,6 @@ components:
         code_verifier:
           type: string
           description: PKCE code verifier matching the original `code_challenge`. Used by native apps in lieu of `client_assertion`.
-    Error:
-      type: object
-      properties:
-        error:
-          type: string
-        error_description:
-          type: string
     TokenResponse:
       type: object
       properties:
@@ -95,6 +88,13 @@ components:
         id_token:
           type: string
           description: Signed JWT (RS256) carrying authenticated user identity claims.
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+        error_description:
+          type: string
   securitySchemes:
     bearerAuth:
       type: http
