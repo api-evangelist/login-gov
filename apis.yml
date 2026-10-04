@@ -295,8 +295,6 @@ apis:
   humanURL: https://developers.login.gov/oidc/
   baseURL: https://secure.login.gov
   tags:
-  - UserInfo
-  tags_raw:
   - User Info
   properties:
   - type: OpenAPI
