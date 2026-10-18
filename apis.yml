@@ -49,6 +49,18 @@ tags:
 - Identity
 - Authentication
 - SSO
+- OpenID Connect
+- SAML
+- IAL2
+- AAL2
+- Identity Federation
+tags_raw:
+- Government
+- Federal
+- GSA
+- Identity
+- Authentication
+- SSO
 - OIDC
 - SAML
 - IAL2
@@ -295,6 +307,8 @@ apis:
   humanURL: https://developers.login.gov/oidc/
   baseURL: https://secure.login.gov
   tags:
+  - UserInfo
+  tags_raw:
   - User Info
   properties:
   - type: OpenAPI
