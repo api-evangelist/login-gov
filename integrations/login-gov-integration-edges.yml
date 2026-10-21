@@ -1,0 +1,270 @@
+edges:
+- partner_name: U.S. Army
+  app: U.S. Army
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://github.com/GSA-TTS/identity-site/blob/main/content/_partners/index._en.md
+  category: Login.gov partner agency (relying party)
+  detected_by: sweep-us-federal-api-programs.py
+  detected: '2026-10-21'
+- partner_name: National Aeronautics and Space Administration (NASA)
+  app: National Aeronautics and Space Administration (NASA)
+  partner: nasa
+  partner_match: domain+name-among-holders
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://github.com/GSA-TTS/identity-site/blob/main/content/_partners/index._en.md
+  category: Login.gov partner agency (relying party)
+  detected_by: sweep-us-federal-api-programs.py
+  detected: '2026-10-21'
+  identity: wikidata Q23548 'National Aeronautics and Space Administration' P856 https://www.nasa.gov/
+  identity_source: wikidata P856 (labelled provenance step; Kin 2026-10-15 decision 1)
+- partner_name: U.S. Department of Agriculture (USDA)
+  app: U.S. Department of Agriculture (USDA)
+  partner: usda
+  partner_match: domain+name-among-holders
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://github.com/GSA-TTS/identity-site/blob/main/content/_partners/index._en.md
+  category: Login.gov partner agency (relying party)
+  detected_by: sweep-us-federal-api-programs.py
+  detected: '2026-10-21'
+  identity: wikidata Q501542 'United States Department of Agriculture' P856 http://www.usda.gov/
+  identity_source: wikidata P856 (labelled provenance step; Kin 2026-10-15 decision 1)
+- partner_name: U.S. Department of Education
+  app: U.S. Department of Education
+  partner: department-of-education
+  partner_match: domain+name-among-holders
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://github.com/GSA-TTS/identity-site/blob/main/content/_partners/index._en.md
+  category: Login.gov partner agency (relying party)
+  detected_by: sweep-us-federal-api-programs.py
+  detected: '2026-10-21'
+  identity: wikidata Q861556 'United States Department of Education' P856 https://www.ed.gov/
+  identity_source: wikidata P856 (labelled provenance step; Kin 2026-10-15 decision 1)
+- partner_name: U.S. Department of Homeland Security (DHS)
+  app: U.S. Department of Homeland Security (DHS)
+  partner: department-of-homeland-security
+  partner_match: domain+name-among-holders
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://github.com/GSA-TTS/identity-site/blob/main/content/_partners/index._en.md
+  category: Login.gov partner agency (relying party)
+  detected_by: sweep-us-federal-api-programs.py
+  detected: '2026-10-21'
+  identity: wikidata Q11231 'United States Department of Homeland Security' P856 http://www.dhs.gov
+  identity_source: wikidata P856 (labelled provenance step; Kin 2026-10-15 decision 1)
+- partner_name: U.S. Department of the Interior (DOI)
+  app: U.S. Department of the Interior (DOI)
+  partner: doi
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://github.com/GSA-TTS/identity-site/blob/main/content/_partners/index._en.md
+  category: Login.gov partner agency (relying party)
+  detected_by: sweep-us-federal-api-programs.py
+  detected: '2026-10-21'
+  identity: wikidata Q608427 'United States Department of the Interior' P856 https://doi.gov
+  identity_source: wikidata P856 (labelled provenance step; Kin 2026-10-15 decision 1)
+- partner_name: U.S. Department of Veterans Affairs (VA)
+  app: U.S. Department of Veterans Affairs (VA)
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://github.com/GSA-TTS/identity-site/blob/main/content/_partners/index._en.md
+  category: Login.gov partner agency (relying party)
+  detected_by: sweep-us-federal-api-programs.py
+  detected: '2026-10-21'
+- partner_name: U.S. Social Security Administration (SSA)
+  app: U.S. Social Security Administration (SSA)
+  partner: social-security-administration
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://github.com/GSA-TTS/identity-site/blob/main/content/_partners/index._en.md
+  category: Login.gov partner agency (relying party)
+  detected_by: sweep-us-federal-api-programs.py
+  detected: '2026-10-21'
+  identity: wikidata Q2824618 'Social Security Administration' P856 https://www.ssa.gov
+  identity_source: wikidata P856 (labelled provenance step; Kin 2026-10-15 decision 1)
+- partner_name: Department of Labor (DOL)
+  app: Department of Labor (DOL)
+  partner: dol
+  partner_match: domain+name-among-holders
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://github.com/GSA-TTS/identity-site/blob/main/content/_partners_impact_stories/dol._en.md
+  category: Login.gov partner agency (relying party)
+  detected_by: sweep-us-federal-api-programs.py
+  detected: '2026-10-21'
+  identity: wikidata Q628807 'United States Department of Labor' P856 https://www.dol.gov/
+  identity_source: wikidata P856 (labelled provenance step; Kin 2026-10-15 decision 1)
+- partner_name: Railroad Retirement Board (RRB)
+  app: Railroad Retirement Board (RRB)
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://github.com/GSA-TTS/identity-site/blob/main/content/_partners_impact_stories/rrb._en.md
+  category: Login.gov partner agency (relying party)
+  detected_by: sweep-us-federal-api-programs.py
+  detected: '2026-10-21'
+- partner_name: Small Business Administration (SBA)
+  app: Small Business Administration (SBA)
+  partner: sba
+  partner_match: domain+name-among-holders
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://github.com/GSA-TTS/identity-site/blob/main/content/_partners/impact-stories._en.md
+  category: Login.gov partner agency (relying party)
+  detected_by: sweep-us-federal-api-programs.py
+  detected: '2026-10-21'
+  identity: wikidata Q495354 'Small Business Administration' P856 http://www.sba.gov/
+  identity_source: wikidata P856 (labelled provenance step; Kin 2026-10-15 decision 1)
+- partner_name: IRS
+  app: IRS
+  partner: irs
+  partner_match: domain+name-among-holders
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://github.com/GSA-TTS/identity-site/blob/main/content/_help/specific-agencies/irs._en.md
+  category: Login.gov partner agency (relying party)
+  detected_by: sweep-us-federal-api-programs.py
+  detected: '2026-10-21'
+  identity: wikidata Q973587 'Internal Revenue Service' P856 https://www.irs.gov
+  identity_source: wikidata P856 (labelled provenance step; Kin 2026-10-15 decision 1)
+- partner_name: Medicare
+  app: Medicare
+  partner: cms-gov
+  partner_match: domain+name-among-holders
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://github.com/GSA-TTS/identity-site/blob/main/content/_help/specific-agencies/medicare._en.md
+  category: Login.gov partner agency (relying party)
+  detected_by: sweep-us-federal-api-programs.py
+  detected: '2026-10-21'
+  identity: wikidata Q5060058 'Centers for Medicare and Medicaid Services' P856 https://www.cms.gov/
+  identity_source: wikidata P856 (labelled provenance step; Kin 2026-10-15 decision 1)
+- partner_name: OPM Retirement Services
+  app: OPM Retirement Services
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://github.com/GSA-TTS/identity-site/blob/main/content/_help/specific-agencies/opm-retirement-services._en.md
+  category: Login.gov partner agency (relying party)
+  detected_by: sweep-us-federal-api-programs.py
+  detected: '2026-10-21'
+- partner_name: SAM.gov
+  app: SAM.gov
+  partner: sam.gov
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://github.com/GSA-TTS/identity-site/blob/main/content/_help/specific-agencies/sam._en.md
+  category: Login.gov partner agency (relying party)
+  detected_by: sweep-us-federal-api-programs.py
+  detected: '2026-10-21'
+  identity: wikidata Q5060650 'System for Award Management' P856 https://sam.gov/
+  identity_source: wikidata P856 (labelled provenance step; Kin 2026-10-15 decision 1)
+- partner_name: Trusted Traveler Programs (CBP)
+  app: Trusted Traveler Programs (CBP)
+  partner: cbp
+  partner_match: domain+name-among-holders
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://github.com/GSA-TTS/identity-site/blob/main/content/_help/specific-agencies/trusted-traveler-programs._en.md
+  category: Login.gov partner agency (relying party)
+  detected_by: sweep-us-federal-api-programs.py
+  detected: '2026-10-21'
+  identity: wikidata Q368804 'U.S. Customs and Border Protection' P856 https://www.cbp.gov/
+  identity_source: wikidata P856 (labelled provenance step; Kin 2026-10-15 decision 1)
+- partner_name: USAJOBS
+  app: USAJOBS
+  partner: usajobs
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://github.com/GSA-TTS/identity-site/blob/main/content/_help/specific-agencies/overview._en.md
+  category: Login.gov partner agency (relying party)
+  detected_by: sweep-us-federal-api-programs.py
+  detected: '2026-10-21'
+  identity: wikidata Q7865747 'USAJobs' P856 http://www.usajobs.gov/
+  identity_source: wikidata P856 (labelled provenance step; Kin 2026-10-15 decision 1)
+generated: '2026-10-21'
+method: searched
+source:
+- https://api.data.gov/
+- https://github.com/GSA/api.data.gov/blob/main/content/users.csv
+- https://login.gov/partners/
+- https://github.com/GSA-TTS/identity-site
+- https://marketplace.fedramp.gov/products/
+- https://www.gsaelibrary.gsa.gov/ElibMain/home.do
+- https://api.data.gov/docs/
+- https://partners.login.gov/
+- https://marketplace.fedramp.gov/
+checked:
+- https://api.data.gov/
+- https://api.data.gov/docs/
+- https://github.com/GSA-TTS/identity-site
+- https://github.com/GSA/api.data.gov/blob/main/content/users.csv
+- https://login.gov/partners/
+- https://marketplace.fedramp.gov/
+- https://marketplace.fedramp.gov/products/
+- https://partners.login.gov/
+- https://www.gsaelibrary.gsa.gov/ElibMain/home.do
