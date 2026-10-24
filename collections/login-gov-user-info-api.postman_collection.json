@@ -1,0 +1,178 @@
+{
+  "info": {
+    "_postman_id": "bc858cf5-4a03-458a-8c9b-5b8d86359354",
+    "name": "Login.gov OpenID Connect User Info API",
+    "description": "Login.gov is the U.S.\n\nContact Support:\n Name: Login.gov Partner Support\n Email: partners@login.gov",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T02:36:50.000Z",
+    "updatedAt": "2026-10-22T02:36:50.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-bc858cf5-4a03-458a-8c9b-5b8d86359354"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "openid_connect",
+          "item": [
+            {
+              "name": "userinfo",
+              "item": [
+                {
+                  "name": "Get Authenticated User Attributes",
+                  "id": "07764d9c-8c1d-467a-86fd-3c4d887457cb",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{bearerToken}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/openid_connect/userinfo",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "openid_connect",
+                        "userinfo"
+                      ]
+                    },
+                    "description": "Returns user attributes consented to during authorization. Requires a bearer `access_token`."
+                  },
+                  "response": [
+                    {
+                      "id": "f76322da-f2d7-4f86-a48e-75768270b387",
+                      "name": "User attributes.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/openid_connect/userinfo",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "openid_connect",
+                            "userinfo"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"sub\": \"<string>\",\n  \"iss\": \"<uri>\",\n  \"email\": \"<email>\",\n  \"email_verified\": \"<boolean>\",\n  \"all_emails\": [\n    \"<email>\",\n    \"<email>\"\n  ],\n  \"locale\": \"<string>\",\n  \"ial\": \"<string>\",\n  \"aal\": \"<string>\",\n  \"given_name\": \"<string>\",\n  \"family_name\": \"<string>\",\n  \"address\": {\n    \"formatted\": \"<string>\",\n    \"street_address\": \"<string>\",\n    \"locality\": \"<string>\",\n    \"region\": \"<string>\",\n    \"postal_code\": \"<string>\",\n    \"country\": \"<string>\"\n  },\n  \"phone\": \"<string>\",\n  \"phone_verified\": \"<boolean>\",\n  \"birthdate\": \"<date>\",\n  \"social_security_number\": \"<string>\",\n  \"verified_at\": \"<integer>\",\n  \"x509_subject\": \"<string>\",\n  \"x509_issuer\": \"<string>\",\n  \"x509_presented\": \"<boolean>\"\n}",
+                      "createdAt": "2026-10-22T02:36:51.000Z",
+                      "updatedAt": "2026-10-22T02:36:51.000Z",
+                      "uid": "35240-f76322da-f2d7-4f86-a48e-75768270b387"
+                    },
+                    {
+                      "id": "f8f57e5f-32fe-43e5-8a9c-0e9a1087075c",
+                      "name": "Invalid or expired access token.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/openid_connect/userinfo",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "openid_connect",
+                            "userinfo"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"error_description\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T02:36:51.000Z",
+                      "updatedAt": "2026-10-22T02:36:51.000Z",
+                      "uid": "35240-f8f57e5f-32fe-43e5-8a9c-0e9a1087075c"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T02:36:50.000Z",
+                  "updatedAt": "2026-10-22T02:36:50.000Z",
+                  "uid": "35240-07764d9c-8c1d-467a-86fd-3c4d887457cb"
+                }
+              ],
+              "id": "64fc5dba-bb05-456a-9a93-2eb9054d9a47",
+              "createdAt": "2026-10-22T02:36:50.000Z",
+              "updatedAt": "2026-10-22T02:36:50.000Z",
+              "uid": "35240-64fc5dba-bb05-456a-9a93-2eb9054d9a47"
+            }
+          ],
+          "id": "2971cff0-0961-42ac-8fc8-6f888e069835",
+          "createdAt": "2026-10-22T02:36:50.000Z",
+          "updatedAt": "2026-10-22T02:36:50.000Z",
+          "uid": "35240-2971cff0-0961-42ac-8fc8-6f888e069835"
+        }
+      ],
+      "id": "85728d1f-2c76-44b6-b125-8a359bb6404f",
+      "createdAt": "2026-10-22T02:36:50.000Z",
+      "updatedAt": "2026-10-22T02:36:50.000Z",
+      "uid": "35240-85728d1f-2c76-44b6-b125-8a359bb6404f"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://idp.int.identitysandbox.gov"
+    }
+  ]
+}

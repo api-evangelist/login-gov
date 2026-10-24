@@ -1,184 +1,199 @@
 {
+  "info": {
+    "_postman_id": "87d9f184-e732-42e9-841f-981b6bf5d1b4",
+    "name": "Login.gov SAML 2.0 Authentication API",
+    "description": "Login.gov also supports SAML 2.0 for relying parties that prefer enterprise federation\nsemantics over OIDC.\n\nContact Support:\n Name: Login.gov Partner Support\n Email: partners@login.gov",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T02:36:16.000Z",
+    "updatedAt": "2026-10-22T02:36:16.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-87d9f184-e732-42e9-841f-981b6bf5d1b4"
+  },
   "item": [
     {
-      "id": "c5ae5cc4-06c5-40b1-a8f5-a36f0416c16e",
-      "name": "Authentication",
-      "description": {
-        "content": "SAML SSO request endpoint.",
-        "type": "text/plain"
-      },
+      "name": "api",
       "item": [
         {
-          "id": "4051a8ec-c88b-40e1-bee4-8c2cfd7da7c6",
-          "name": "Initiate SAML SSO (HTTP-Redirect)",
-          "request": {
-            "name": "Initiate SAML SSO (HTTP-Redirect)",
-            "description": {
-              "content": "Accepts a Base64-encoded, DEFLATE-compressed `SAMLRequest` via HTTP-Redirect.\nThe user authenticates with Login.gov and the IdP responds with a signed SAML\nassertion POSTed to the SP's Assertion Consumer Service URL.\n",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "saml",
-                "auth2026"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "SAMLRequest",
-                  "value": "<string>",
-                  "description": "(Required) Base64-encoded DEFLATE-compressed AuthnRequest."
-                },
-                {
-                  "disabled": false,
-                  "key": "RelayState",
-                  "value": "<string>",
-                  "description": "Opaque value echoed back in the SAML response."
-                },
-                {
-                  "disabled": false,
-                  "key": "SigAlg",
-                  "value": "<string>",
-                  "description": "Signature algorithm URI when the request is signed."
-                },
-                {
-                  "disabled": false,
-                  "key": "Signature",
-                  "value": "<string>",
-                  "description": "Base64-encoded signature over the request."
-                }
-              ],
-              "variable": []
-            },
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "saml",
+          "item": [
             {
-              "id": "8935d3d2-c839-4051-b797-c26936e2725e",
-              "name": "Login.gov sign-in UI is rendered to the end user.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "saml",
-                    "auth2026"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
+              "name": "auth2026",
+              "item": [
+                {
+                  "name": "Initiate SAML SSO (HTTP-Redirect)",
+                  "id": "4a560e99-7514-4139-a9bc-cb524e96d8d9",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/saml/auth2026?SAMLRequest=<string>&RelayState=<string>&SigAlg=<string>&Signature=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "saml",
+                        "auth2026"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Base64-encoded DEFLATE-compressed AuthnRequest.",
+                          "key": "SAMLRequest",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Opaque value echoed back in the SAML response.",
+                          "key": "RelayState",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Signature algorithm URI when the request is signed.",
+                          "key": "SigAlg",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Base64-encoded signature over the request.",
+                          "key": "Signature",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "description": "Accepts a Base64-encoded, DEFLATE-compressed `SAMLRequest` via HTTP-Redirect.\nThe user authenticates with Login.gov and the IdP responds with a signed SAML\nassertion POSTed to the SP's Assertion Consumer Service URL."
+                  },
+                  "response": [
                     {
-                      "key": "SAMLRequest",
-                      "value": "<string>"
+                      "id": "857770b4-61f7-4c23-b1fa-e7b15b5ae42e",
+                      "name": "Login.gov sign-in UI is rendered to the end user.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/saml/auth2026?SAMLRequest=<string>&RelayState=<string>&SigAlg=<string>&Signature=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "saml",
+                            "auth2026"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) Base64-encoded DEFLATE-compressed AuthnRequest.",
+                              "key": "SAMLRequest",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Opaque value echoed back in the SAML response.",
+                              "key": "RelayState",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Signature algorithm URI when the request is signed.",
+                              "key": "SigAlg",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Base64-encoded signature over the request.",
+                              "key": "Signature",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T02:36:17.000Z",
+                      "updatedAt": "2026-10-22T02:36:17.000Z",
+                      "uid": "35240-857770b4-61f7-4c23-b1fa-e7b15b5ae42e"
                     },
                     {
-                      "key": "RelayState",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "SigAlg",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "Signature",
-                      "value": "<string>"
+                      "id": "3bf405be-78df-4d3f-bc3e-6a8bfde051dd",
+                      "name": "Redirect to authentication challenge or to SP ACS with the signed SAML response.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/saml/auth2026?SAMLRequest=<string>&RelayState=<string>&SigAlg=<string>&Signature=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "saml",
+                            "auth2026"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) Base64-encoded DEFLATE-compressed AuthnRequest.",
+                              "key": "SAMLRequest",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Opaque value echoed back in the SAML response.",
+                              "key": "RelayState",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Signature algorithm URI when the request is signed.",
+                              "key": "SigAlg",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Base64-encoded signature over the request.",
+                              "key": "Signature",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Found",
+                      "code": 302,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T02:36:17.000Z",
+                      "updatedAt": "2026-10-22T02:36:17.000Z",
+                      "uid": "35240-3bf405be-78df-4d3f-bc3e-6a8bfde051dd"
                     }
                   ],
-                  "variable": []
-                },
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "createdAt": "2026-10-22T02:36:17.000Z",
+                  "updatedAt": "2026-10-22T02:36:17.000Z",
+                  "uid": "35240-4a560e99-7514-4139-a9bc-cb524e96d8d9"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "17976a8c-3bb0-42e4-b3d0-6bddde9e7b1c",
-              "name": "Redirect to authentication challenge or to SP ACS with the signed SAML response.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "saml",
-                    "auth2026"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "SAMLRequest",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "RelayState",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "SigAlg",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "Signature",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": []
-                },
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Found",
-              "code": 302,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "id": "1e3173bd-ee58-4d2e-9834-f62a063b127d",
+              "createdAt": "2026-10-22T02:36:17.000Z",
+              "updatedAt": "2026-10-22T02:36:17.000Z",
+              "uid": "35240-1e3173bd-ee58-4d2e-9834-f62a063b127d"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "b8999d29-6069-496a-b8db-c5cb4d2f0e32",
+          "createdAt": "2026-10-22T02:36:17.000Z",
+          "updatedAt": "2026-10-22T02:36:17.000Z",
+          "uid": "35240-b8999d29-6069-496a-b8db-c5cb4d2f0e32"
         }
       ],
-      "event": []
+      "id": "4a455f2e-88d8-44f5-a23d-b1c7574013b3",
+      "createdAt": "2026-10-22T02:36:17.000Z",
+      "updatedAt": "2026-10-22T02:36:17.000Z",
+      "uid": "35240-4a455f2e-88d8-44f5-a23d-b1c7574013b3"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "https://idp.int.identitysandbox.gov",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "https://idp.int.identitysandbox.gov"
     }
-  ],
-  "info": {
-    "_postman_id": "1aff0ebc-a68b-41a0-a724-455662c6e0be",
-    "name": "Login.gov OpenID Connect Authentication API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Login.gov is the U.S. federal government's secure single sign-on service for public-facing\ngovernment applications, operated by the General Services Administration's Technology\nTransformation Services. This OpenAPI describes the OpenID Connect (OIDC) integration\nsurface used by relying parties (service providers) to authenticate users at IAL1 (auth\nonly) and IAL2 (identity-verified) assurance levels.\n\nLogin.gov conforms to the iGov OpenID Connect Profile. Implicit flow is not supported.\nClient authentication uses private_key_jwt (preferred for web apps) or PKCE\n(preferred for native mobile apps).\n\n\nContact Support:\n Name: Login.gov Partner Support\n Email: partners@login.gov",
-      "type": "text/plain"
-    }
-  }
+  ]
 }
