@@ -1,4 +1,4 @@
-# Login.gov (login-gov)
+# Login.gov
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,123 +66,162 @@
 
 Login.gov is the U.S. federal government's secure single sign-on and identity verification service for the public, operated by the General Services Administration's Technology Transformation Services (GSA TTS). Relying parties — federal, and in some cases state and local — federate user authentication to Login.gov via OpenID Connect (iGov profile) or SAML 2.0, with support for IAL1 (auth-only) and IAL2 (identity-verified) assurance and AAL2 multi-factor authentication including phishing-resistant and PIV/CAC authenticators.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/login-gov/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/login-gov/refs/heads/main/apis.yml)
+**Areas:** Government · Federal · GSA · Identity · Authentication · SSO · OpenID Connect · SAML · IAL2 · AAL2 · Identity Federation
 
-## Scope
+## Login.gov on APIs.io
 
-- **Type:** Index
-- **Position:** Consumer
-- **Access:** 3rd-Party
+Everything profiled for Login.gov is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/login-gov/](https://apis.io/providers/login-gov/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (7)
 
-- Government
-- Federal
-- GSA
-- Identity
-- Authentication
-- SSO
-- OIDC
-- SAML
-- IAL2
-- AAL2
+- [Login.gov Authentication API](https://apis.io/apis/login-gov/login-gov-authentication-api/) — SAML SSO request endpoint.
+- [Login.gov Authorization API](https://apis.io/apis/login-gov/login-gov-authorization-api/) — OAuth 2.0 authorization endpoint where the user authenticates.
+- [Login.gov Discovery API](https://apis.io/apis/login-gov/login-gov-discovery-api/) — OIDC discovery and public key endpoints.
+- [Login.gov Logout API](https://apis.io/apis/login-gov/login-gov-logout-api/) — RP-initiated logout and session termination.
+- [Login.gov Metadata API](https://apis.io/apis/login-gov/login-gov-metadata-api/) — SAML 2.0 IdP metadata.
+- [Login.gov Token API](https://apis.io/apis/login-gov/login-gov-token-api/) — Token exchange using private_key_jwt or PKCE.
+- [Login.gov User Info API](https://apis.io/apis/login-gov/login-gov-user-info-api/) — User attribute retrieval with a bearer access token.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-05-25
-- **Modified:** 2026-05-25
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### Login.gov OpenID Connect API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-The Login.gov OIDC integration surface used by relying parties. Conforms to the
-iGov OpenID Connect Profile. Supports authorization code flow with
-private_key_jwt (web apps) or PKCE (native apps); implicit flow is not supported.
-Exposes discovery, JWKS, authorize, token, userinfo, and RP-initiated logout
-endpoints in both sandbox (idp.int.identitysandbox.gov) and production
-(secure.login.gov).
+- [Login Gov Agentic Access](https://apis.io/agentic-access/login-gov/login-gov-agentic-access/)
 
-- **Human URL:** [https://developers.login.gov/oidc/](https://developers.login.gov/oidc/)
-- **Base URL:** `https://secure.login.gov`
+#### JSON Schema (2)
 
-#### Tags
+The data models the API reads and writes.
 
-- OIDC
-- OpenID Connect
-- Authentication
-- SSO
-- Federal
+- [Login.gov ID Token Claims](https://apis.io/schemas/login-gov/login-gov-id-token/)
+- [Login.gov UserInfo](https://apis.io/schemas/login-gov/login-gov-userinfo/)
 
-#### Properties
+#### JSON-LD (1)
 
-- [Documentation](https://developers.login.gov/oidc/)
-- [Documentation](https://developers.login.gov/oidc/getting-started/)
-- [Documentation](https://developers.login.gov/oidc/authorization/)
-- [Documentation](https://developers.login.gov/oidc/token/)
-- [Documentation](https://developers.login.gov/oidc/user-info/)
-- [Documentation](https://developers.login.gov/oidc/logout/)
-- [Documentation](https://developers.login.gov/oidc/certificates/)
-- [Sign Up](https://portal.int.identitysandbox.gov)
-- [OpenAPI](openapi/login-gov-oidc-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/login-gov-oidc.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/login-gov-oidc.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/login-gov-userinfo-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/login-gov-id-token-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON-LD](json-ld/login-gov-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [Spectral Ruleset](rules/login-gov-rules.yml)
+Linked-data contexts for the provider's vocabulary.
 
-### Login.gov SAML 2.0 API
+- [Login Gov Context](https://apis.io/jsonld/login-gov/login-gov-context/)
 
-SAML 2.0 federation surface for relying parties that prefer SAML over OIDC. Uses
-HTTP-Redirect SSO and HTTP-POST SLO with the persistent NameID format (UUID v4).
-Endpoints are year-versioned (2026 = certificates valid through April 1, 2027).
-Metadata is published; clients should consume it dynamically to handle annual
-certificate rotations.
+#### Vocabulary (1)
 
-- **Human URL:** [https://developers.login.gov/saml/](https://developers.login.gov/saml/)
-- **Base URL:** `https://secure.login.gov`
+The provider's domain terms, defined.
 
-#### Tags
+- [Login Gov Vocabulary](https://apis.io/vocabularies/login-gov/login-gov-vocabulary/)
 
-- SAML
-- Authentication
-- SSO
-- Federal
+#### Examples (3)
 
-#### Properties
+Example requests and responses.
 
-- [Documentation](https://developers.login.gov/saml/)
-- [Documentation](https://developers.login.gov/saml/getting-started/)
-- [OpenAPI](openapi/login-gov-saml-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/login-gov-saml.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/login-gov-saml.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Login Gov Token Exchange Example](https://apis.io/examples/login-gov/login-gov-token-exchange-example/)
+- [Login Gov Userinfo Ial1 Example](https://apis.io/examples/login-gov/login-gov-userinfo-ial1-example/)
+- [Login Gov Userinfo Ial2 Example](https://apis.io/examples/login-gov/login-gov-userinfo-ial2-example/)
 
-## Common Properties
+#### Collections (9)
+
+Postman and Open Collection request collections.
+
+- [Login.gov OpenID Connect Authentication API](https://apis.io/collections/login-gov/open-login-gov-authentication-api/)
+- [Login.gov OpenID Connect Authentication Authorization API](https://apis.io/collections/login-gov/open-login-gov-authorization-api/)
+- [Login.gov OpenID Connect Authentication Discovery API](https://apis.io/collections/login-gov/open-login-gov-discovery-api/)
+- [Login.gov OpenID Connect Authentication Logout API](https://apis.io/collections/login-gov/open-login-gov-logout-api/)
+- [Login.gov OpenID Connect Authentication Metadata API](https://apis.io/collections/login-gov/open-login-gov-metadata-api/)
+- [Login.gov OpenID Connect API](https://apis.io/collections/login-gov/open-login-gov-oidc/)
+- [Login.gov SAML 2.0 API](https://apis.io/collections/login-gov/open-login-gov-saml/)
+- [Login.gov OpenID Connect Authentication Token API](https://apis.io/collections/login-gov/open-login-gov-token-api/)
+- [Login.gov OpenID Connect Authentication UserInfo API](https://apis.io/collections/login-gov/open-login-gov-userinfo-api/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [Login.gov — jsonschema rules](https://apis.io/rules/login-gov/login-gov-jsonschema-spectral-rules/)
+- [Login.gov API Rules](https://apis.io/rules/login-gov/login-gov-rules/)
+
+#### Security (3)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Login Gov Authentication](https://apis.io/security/login-gov/login-gov-authentication/)
+- [Login Gov Domain Security](https://apis.io/security/login-gov/login-gov-domain-security/)
+- [Login Gov Vulnerability Disclosure](https://apis.io/security/login-gov/login-gov-vulnerability-disclosure/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Login Gov Plans Pricing](https://apis.io/plans/login-gov/login-gov-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Login Gov Rate Limits](https://apis.io/rate-limits/login-gov/login-gov-rate-limits/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://www.login.gov)
-- [Portal](https://www.login.gov/partners)
 - [Documentation](https://developers.login.gov)
-- [Sign Up](https://www.login.gov/partners/get-started/)
-- [Getting Started](https://developers.login.gov/oidc/getting-started/)
-- [Sandbox](https://portal.int.identitysandbox.gov)
-- [GitHub Organization](https://github.com/18F)
-- [GitHub Repository](https://github.com/18F/identity-idp)
-- [GitHub Repository](https://github.com/18F/identity-oidc-sinatra)
-- [GitHub Repository](https://github.com/18F/identity-saml-sinatra)
-- [Status Page](https://status.login.gov)
+- [Getting started](https://developers.login.gov/oidc/getting-started/)
 - [Blog](https://www.login.gov/about/news/)
-- [Contact](https://www.login.gov/contact/)
-- [Business Inquiries](https://www.login.gov/partners/business-inquiries/)
-- [Privacy](https://www.login.gov/policy/)
-- [Accessibility](https://www.login.gov/accessibility/)
-- [Plans](plans/login-gov-plans-pricing.yml)
-- [Rate Limits](rate-limits/login-gov-rate-limits.yml)
-- [Vocabulary](vocabulary/login-gov-vocabulary.yml)
-- [Features](undefined)
+- [GitHub](https://github.com/18F)
+- [Status](https://status.login.gov)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** info@apievangelist.com
-**URL:** https://apievangelist.com
+**Kin Score 46.9** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 56.7 |
+| Contract governance | 27.3 |
+| Operational transparency | 44.7 |
+| Developer ergonomics | 50.0 |
+| Access clarity | 28.9 |
+
+**Agent readiness 19.6** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 26.5** — Government & Public Sector
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/login-gov/](https://apis.io/providers/login-gov/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Login.gov: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/login-gov/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
